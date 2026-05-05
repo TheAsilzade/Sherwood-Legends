@@ -489,6 +489,49 @@
       text-transform: uppercase;
     }
 
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .media-card {
+      overflow: hidden;
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.03)),
+        rgba(19, 10, 31, 0.78);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 48px rgba(0, 0, 0, 0.28);
+    }
+
+    .media-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      background: rgba(0, 0, 0, 0.22);
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .media-card div {
+      padding: 18px;
+    }
+
+    .media-card strong {
+      display: block;
+      color: var(--gold);
+      font-size: 1.02rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .media-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
     .download {
       padding: 34px;
       border: 1px solid var(--line);
@@ -542,6 +585,7 @@
       }
 
       .feature-grid,
+      .media-grid,
       .character-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -571,6 +615,7 @@
       }
 
       .feature-grid,
+      .media-grid,
       .character-grid,
       .scene,
       .ribbon {
@@ -594,6 +639,7 @@
         </div>
       </a>
       <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#updates">Updates</a>
         <a href="#world">World</a>
         <a href="#combat">Combat</a>
         <a href="#heroes">Heroes</a>
@@ -610,7 +656,7 @@
           <h1>Sherwood Legends</h1>
           <p class="tagline">
             Enter a darker, richer Sherwood world shaped around classic dungeon adventure, open-world raids,
-            real-time battles, pets, mounts, legendary weapons, and player-driven clans. Built by
+            real-time battles, animated world objects, new weapons, refreshed pets, and player-driven clans. Built by
             <strong>Asilzade</strong> under <strong>Noblesse Ltc.</strong>
           </p>
           <div class="hero-actions">
@@ -627,11 +673,76 @@
     </section>
 
     <div class="ribbon" aria-label="Game highlights">
-      <div>Open World</div>
-      <div>Deep Dungeon</div>
-      <div>Real-Time PvP</div>
-      <div>Pets & Mounts</div>
+      <div>3 New Weapons</div>
+      <div>4 Graphic Modes</div>
+      <div>Raid Scoreboard</div>
+      <div>Animated Ship</div>
     </div>
+
+    <section id="updates">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="overline">Latest Realm Update</div>
+          <h2>Weapons, pets, graphics, raids, and moving world systems.</h2>
+          <p>
+            Sherwood Legends now has a larger custom feature set: three new weapon models, expanded pet textures
+            and color choices, refreshed monster visuals, a moving harbor ship, multiple graphics modes, new PvP
+            variants, and a raid-ready battleground system.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <strong>Three New Weapons</strong>
+            <p>Three custom swords have been added to the realm, with weapon color logic tuned so blade finishes can follow the game color system.</p>
+          </article>
+          <article class="feature">
+            <strong>Pet Texture Expansion</strong>
+            <p>All pet lines now support new texture and color variants, giving transformations more visual identity across the world.</p>
+          </article>
+          <article class="feature">
+            <strong>New Mob Textures</strong>
+            <p>Monster visuals are being refreshed with new texture directions so dungeons and raids feel less repetitive.</p>
+          </article>
+          <article class="feature">
+            <strong>Four Graphics Modes</strong>
+            <p>The visual pipeline now offers four different graphics profiles, from lighter classic play to richer HD-style shader presentation.</p>
+          </article>
+          <article class="feature">
+            <strong>Teleport 1 Themes</strong>
+            <p>Sherwood Castle now supports four different theme modes, allowing players to choose the atmosphere they want for Teleport 1.</p>
+          </article>
+          <article class="feature">
+            <strong>Raid Systems</strong>
+            <p>Raid play now includes team separation, scoreboard HUD direction, and a win condition structure for organized battles.</p>
+          </article>
+        </div>
+
+        <div class="media-grid">
+          <article class="media-card">
+            <img src="./assets/texture-expansion.png" alt="Sherwood Legends texture and color expansion showcase" />
+            <div>
+              <strong>Texture and Color Showcase</strong>
+              <p>A public-facing showcase image for pet colors, mob refreshes, weapon finishes, and HD graphics modes without exposing raw game texture atlases.</p>
+            </div>
+          </article>
+          <article class="media-card">
+            <img src="./assets/ship-orbit.png" alt="Animated ship in Sherwood Legends harbor" />
+            <div>
+              <strong>Animated Harbor Ship</strong>
+              <p>The ship now has a world animation path and can sail around the map area, creating a more alive Teleport 1 harbor scene.</p>
+            </div>
+          </article>
+          <article class="media-card">
+            <img src="./assets/scoreboard-hud.png" alt="Raid scoreboard HUD concept" />
+            <div>
+              <strong>Scoreboard HUD</strong>
+              <p>The new raid direction includes team split logic, scoreboard presentation, and a victory mechanism for structured raid matches.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section id="world">
       <div class="wrap">
@@ -647,16 +758,16 @@
 
         <div class="feature-grid">
           <article class="feature">
-            <strong>Islands and Battlegrounds</strong>
-            <p>Travel between islands, raid arenas, castles, clan rooms, and custom battleground spaces built for repeated play.</p>
+            <strong>Raider's Battleground</strong>
+            <p>Teleport 14 is now known as Raider's Battleground, a new PvP-focused arena space designed for raid-style encounters.</p>
           </article>
           <article class="feature">
-            <strong>Custom Server Systems</strong>
-            <p>Account flow, guest starter kits, premium-style pets, teleport modes, and live multiplayer behavior are shaped for Sherwood Legends.</p>
+            <strong>Castle Theme Modes</strong>
+            <p>Teleport 1 supports four selectable themes, so Sherwood Castle can shift between different moods without changing the core map.</p>
           </article>
           <article class="feature">
-            <strong>Visual Expansion</strong>
-            <p>Purple and gold presentation, HD-style shader tuning, new weapon models, and expanded pet color variants give the realm its own identity.</p>
+            <strong>Living Map Objects</strong>
+            <p>The animated ship system makes the harbor feel active, with the vessel moving around the island path instead of staying static.</p>
           </article>
         </div>
       </div>
@@ -675,6 +786,14 @@
           <p>
             Weapons and character visuals are treated as part of the identity of the world, with custom swords,
             color logic, pet transformations, and role-focused avatars designed to feel readable in motion.
+          </p>
+          <p>
+            PvP has three duel directions: a normal duel profile, a slow-build profile, and an extra-fast profile.
+            The core difference is damage calculation, letting fights feel heavier, steadier, or much faster.
+          </p>
+          <p>
+            Raider's Battleground adds team separation, scoreboard HUD flow, and a win mechanism for organized raid
+            matches rather than simple open-field fighting.
           </p>
           <div class="button-row">
             <a class="btn" href="#heroes">View Heroes</a>
@@ -699,6 +818,8 @@
           <p>
             The site now uses normal Sherwood-style screenshots instead of internal texture or model preview images,
             keeping the public face closer to the fantasy MMO atmosphere.
+            Inside the game, pets, mobs, weapons, and graphics modes are being refreshed with a stronger custom
+            Sherwood Legends identity.
           </p>
         </div>
 
@@ -729,6 +850,20 @@
             <div>
               <h3>Rangers</h3>
               <p>Exploration and character identity stay readable through clean fantasy screenshots.</p>
+            </div>
+          </article>
+          <article class="character-card">
+            <figure><img src="./assets/sherwood-banner.jpg" alt="Sherwood Legends banner" /></figure>
+            <div>
+              <h3>Heavenly Assasin</h3>
+              <p>A new pet with a noble hooded assassin look, close to an Assassin's Creed-like fantasy silhouette without losing the Sherwood style.</p>
+            </div>
+          </article>
+          <article class="character-card">
+            <figure><img src="./assets/viking-screen.jpg" alt="Viking scene" /></figure>
+            <div>
+              <h3>Mob Refresh</h3>
+              <p>New monster texture work gives mobs more variety for dungeon, raid, and battleground encounters.</p>
             </div>
           </article>
         </div>
