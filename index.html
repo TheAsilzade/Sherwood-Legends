@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sherwood Legends | Fantasy MMORPG by Asilzade</title>
+  <meta
+    name="description"
+    content="Sherwood Legends is a dark fantasy MMORPG world by Asilzade and Noblesse Ltc., built around open-world adventure, real-time combat, pets, mounts, weapons, and clan battles."
+  />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="author" content="Asilzade" />
+  <meta name="theme-color" content="#120822" />
+  <link rel="canonical" href="https://sherwoodlegends.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sherwood Legends | Fantasy MMORPG" />
+  <meta
+    property="og:description"
+    content="Enter a purple-and-gold fantasy MMORPG world shaped by Asilzade and Noblesse Ltc."
+  />
+  <meta property="og:url" content="https://sherwoodlegends.com/" />
+  <meta property="og:image" content="https://sherwoodlegends.com/assets/warrior.png" />
+  <meta property="og:site_name" content="Sherwood Legends" />
+  <style>
+    :root {
+      --bg: #08050d;
+      --bg-2: #120822;
+      --panel: rgba(19, 10, 31, 0.78);
+      --panel-2: rgba(255, 255, 255, 0.055);
+      --gold: #f3c15e;
+      --gold-2: #b57a25;
+      --purple: #8e55ff;
+      --purple-2: #3a1868;
+      --text: #fff5df;
+      --muted: #cbbddf;
+      --line: rgba(243, 193, 94, 0.25);
+      --line-soft: rgba(255, 255, 255, 0.11);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.46);
+      --max: 1180px;
+      --font: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+      --display: Georgia, "Times New Roman", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: var(--font);
+      background:
+        linear-gradient(rgba(8, 5, 13, 0.78), rgba(8, 5, 13, 0.96)),
+        url("./assets/wall.png") center top / cover fixed,
+        radial-gradient(circle at 50% 0%, rgba(142, 85, 255, 0.24), transparent 34%),
+        linear-gradient(180deg, #130923 0%, #07040c 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(243, 193, 94, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(243, 193, 94, 0.06) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(180deg, black, transparent 82%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 5, 13, 0.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .crest {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--gold);
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      background:
+        linear-gradient(145deg, rgba(243, 193, 94, 0.18), rgba(142, 85, 255, 0.12)),
+        rgba(255, 255, 255, 0.04);
+      box-shadow: inset 0 0 18px rgba(243, 193, 94, 0.12), 0 0 22px rgba(142, 85, 255, 0.16);
+    }
+
+    .brand strong {
+      display: block;
+      color: var(--gold);
+      font-size: 0.96rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .navlinks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .navlinks a {
+      padding: 10px 12px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: #eadffd;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.2s ease;
+    }
+
+    .navlinks a:hover {
+      border-color: var(--line);
+      color: var(--gold);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: center;
+      padding: 46px 0 34px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(330px, 0.96fr);
+      gap: 26px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 10ch;
+      font-family: var(--display);
+      font-size: clamp(4.5rem, 9vw, 8.4rem);
+      line-height: 0.82;
+      color: #fff1c7;
+      text-shadow:
+        0 3px 0 rgba(55, 23, 96, 0.6),
+        0 0 28px rgba(243, 193, 94, 0.18),
+        0 0 64px rgba(142, 85, 255, 0.2);
+    }
+
+    .tagline {
+      max-width: 660px;
+      margin: 24px 0 0;
+      color: #e4d8f7;
+      font-size: clamp(1rem, 1.8vw, 1.16rem);
+      line-height: 1.86;
+    }
+
+    .hero-actions,
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background:
+        linear-gradient(180deg, rgba(243, 193, 94, 0.16), rgba(181, 122, 37, 0.1)),
+        rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(243, 193, 94, 0.56);
+      background:
+        linear-gradient(180deg, rgba(243, 193, 94, 0.3), rgba(181, 122, 37, 0.16)),
+        rgba(255, 255, 255, 0.06);
+    }
+
+    .btn.primary {
+      color: #180a28;
+      background: linear-gradient(180deg, #ffe09a, #c1842c);
+      border-color: rgba(255, 226, 157, 0.78);
+    }
+
+    .stage {
+      position: relative;
+      min-height: 610px;
+      display: grid;
+      place-items: end center;
+      isolation: isolate;
+    }
+
+    .stage::before {
+      content: "";
+      position: absolute;
+      inset: 11% 4% 4%;
+      z-index: -1;
+      border: 1px solid rgba(243, 193, 94, 0.18);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(142, 85, 255, 0.12), rgba(8, 5, 13, 0.68)),
+        rgba(255, 255, 255, 0.035);
+      box-shadow: var(--shadow), inset 0 0 80px rgba(142, 85, 255, 0.1);
+      transform: skewY(-2deg);
+    }
+
+    .hero-character {
+      width: min(94%, 560px);
+      filter: drop-shadow(0 34px 36px rgba(0, 0, 0, 0.64));
+    }
+
+    .floating-beast {
+      position: absolute;
+      right: -3%;
+      bottom: 3%;
+      width: min(38%, 230px);
+      opacity: 0.94;
+      filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.48));
+    }
+
+    .ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .ribbon div {
+      min-height: 98px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(8, 5, 13, 0.82);
+      color: var(--gold);
+      font-size: 0.83rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 72px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .overline {
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 10px 0 0;
+      color: #fff1c7;
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 0.92;
+    }
+
+    .section-title p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.82;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature,
+    .panel,
+    .character-card {
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
+        rgba(19, 10, 31, 0.78);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 48px rgba(0, 0, 0, 0.28);
+    }
+
+    .feature {
+      min-height: 230px;
+      padding: 22px;
+    }
+
+    .feature strong,
+    .panel strong {
+      display: block;
+      color: var(--gold);
+      font-size: 1.04rem;
+      letter-spacing: 0.02em;
+    }
+
+    .feature p,
+    .panel p,
+    .character-card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .panel {
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .scene {
+      min-height: 490px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.22);
+      box-shadow: var(--shadow);
+    }
+
+    .scene img {
+      width: 100%;
+      height: 100%;
+      min-height: 230px;
+      object-fit: contain;
+      padding: 8px;
+      border-radius: 6px;
+      background:
+        radial-gradient(circle at center, rgba(142, 85, 255, 0.16), transparent 58%),
+        rgba(255, 255, 255, 0.035);
+    }
+
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .character-card {
+      overflow: hidden;
+      min-height: 328px;
+    }
+
+    .character-card figure {
+      margin: 0;
+      min-height: 220px;
+      display: grid;
+      place-items: end center;
+      background:
+        radial-gradient(circle at 50% 25%, rgba(243, 193, 94, 0.18), transparent 44%),
+        linear-gradient(180deg, rgba(142, 85, 255, 0.12), rgba(0, 0, 0, 0.16));
+    }
+
+    .character-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: contain;
+      object-position: center bottom;
+      padding: 10px 8px 0;
+      filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.48));
+    }
+
+    .character-card div {
+      padding: 16px;
+    }
+
+    .character-card h3 {
+      margin: 0;
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .download {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(142, 85, 255, 0.18), rgba(243, 193, 94, 0.1)),
+        rgba(8, 5, 13, 0.84);
+      box-shadow: var(--shadow);
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .download h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+
+    footer {
+      padding: 34px 0 50px;
+      border-top: 1px solid var(--line);
+      background: rgba(4, 2, 8, 0.78);
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-grid strong {
+      color: var(--gold);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .showcase,
+      .download-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stage {
+        min-height: 460px;
+      }
+
+      .feature-grid,
+      .character-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ribbon {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .navlinks {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: clamp(3.7rem, 18vw, 5.2rem);
+      }
+
+      .feature-grid,
+      .character-grid,
+      .scene,
+      .ribbon {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Sherwood Legends home">
+        <div class="crest">SL</div>
+        <div>
+          <strong>Sherwood Legends</strong>
+          <span>By Asilzade</span>
+        </div>
+      </a>
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#world">World</a>
+        <a href="#combat">Combat</a>
+        <a href="#heroes">Heroes</a>
+        <a href="#play">Play</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Fantasy MMORPG Realm</div>
+          <h1>Sherwood Legends</h1>
+          <p class="tagline">
+            Enter a darker, richer Sherwood world shaped around classic dungeon adventure, open-world raids,
+            real-time battles, pets, mounts, legendary weapons, and player-driven clans. Built by
+            <strong>Asilzade</strong> under <strong>Noblesse Ltc.</strong>
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#play">Play Client</a>
+            <a class="btn" href="#world">Explore Realm</a>
+          </div>
+        </div>
+
+        <div class="stage" aria-hidden="true">
+          <img class="hero-character" src="./assets/warrior.png" alt="" />
+          <img class="floating-beast" src="./assets/griffin.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <div class="ribbon" aria-label="Game highlights">
+      <div>Open World</div>
+      <div>Deep Dungeon</div>
+      <div>Real-Time PvP</div>
+      <div>Pets & Mounts</div>
+    </div>
+
+    <section id="world">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="overline">The Realm</div>
+          <h2>A castle world built for raids, clans, and legends.</h2>
+          <p>
+            Sherwood Legends keeps the spirit of a compact online fantasy world, then pushes it toward a stronger
+            private realm identity: richer visuals, custom character choices, expanded pet colors, tuned starter
+            progression, and a server direction shaped for community play.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <strong>Islands and Battlegrounds</strong>
+            <p>Travel between islands, raid arenas, castles, clan rooms, and custom battleground spaces built for repeated play.</p>
+          </article>
+          <article class="feature">
+            <strong>Custom Server Systems</strong>
+            <p>Account flow, guest starter kits, premium-style pets, teleport modes, and live multiplayer behavior are shaped for Sherwood Legends.</p>
+          </article>
+          <article class="feature">
+            <strong>Visual Expansion</strong>
+            <p>Purple and gold presentation, HD-style shader tuning, new weapon models, and expanded pet color variants give the realm its own identity.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="combat">
+      <div class="wrap showcase">
+        <article class="panel">
+          <div class="overline">Combat</div>
+          <h2>Skill, timing, and equipment matter.</h2>
+          <p>
+            The combat loop is built around active decisions: approach, strike, defend, reposition, and survive.
+            Sherwood Legends keeps the immediate action feel while supporting custom weapons, starter loadouts,
+            dungeon progression, and PvP encounters.
+          </p>
+          <p>
+            Weapons and character visuals are treated as part of the identity of the world, with custom swords,
+            color logic, pet transformations, and role-focused avatars designed to feel readable in motion.
+          </p>
+          <div class="button-row">
+            <a class="btn" href="#heroes">View Heroes</a>
+            <a class="btn" href="#play">Get Ready</a>
+          </div>
+        </article>
+
+        <div class="scene" aria-label="Sherwood Legends creature and character art">
+          <img src="./assets/tiger.png" alt="Tiger pet render" />
+          <img src="./assets/minotaur.png" alt="Minotaur render" />
+          <img src="./assets/huntresss.png" alt="Huntress render" />
+          <img src="./assets/seal.png" alt="Seal pet render" />
+        </div>
+      </div>
+    </section>
+
+    <section id="heroes">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="overline">Heroes</div>
+          <h2>Choose your look and carry your progress.</h2>
+          <p>
+            Warriors, paladins, warlocks, huntresses, vikings, skeletons, beasts, and custom variants are part of
+            the long-term visual direction for Sherwood Legends.
+          </p>
+        </div>
+
+        <div class="character-grid">
+          <article class="character-card">
+            <figure><img src="./assets/pladin.png" alt="Paladin character" /></figure>
+            <div>
+              <h3>Paladin</h3>
+              <p>Gold-lined armor for players who want a knightly presence in the castle halls.</p>
+            </div>
+          </article>
+          <article class="character-card">
+            <figure><img src="./assets/youngwarlock.png" alt="Warlock character" /></figure>
+            <div>
+              <h3>Warlock</h3>
+              <p>A darker caster silhouette suited for dungeon runs and high-magic roleplay.</p>
+            </div>
+          </article>
+          <article class="character-card">
+            <figure><img src="./assets/vikingg.png" alt="Viking character" /></figure>
+            <div>
+              <h3>Viking</h3>
+              <p>Heavy northern armor made for raids, duels, and frontline clan identity.</p>
+            </div>
+          </article>
+          <article class="character-card">
+            <figure><img src="./assets/skeleton.png" alt="Skeleton character" /></figure>
+            <div>
+              <h3>Skeleton</h3>
+              <p>An undead avatar direction for players who want a sharper fantasy look.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="play">
+      <div class="wrap download">
+        <div class="download-grid">
+          <div>
+            <div class="overline">SherwoodLegends.com</div>
+            <h2>Client download and account details will be connected next.</h2>
+            <p class="tagline">
+              This page is ready for the public site structure. The final play links, launcher download, Discord,
+              server status, and installation details can be wired in after the hosting and domain records are connected.
+            </p>
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="#" aria-label="Play link placeholder">Coming Soon</a>
+            <a class="btn" href="#top">Back to Top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <strong>Sherwood Legends</strong><br />
+        Created by Asilzade. Published under Noblesse Ltc.
+      </div>
+      <div>
+        Domain: sherwoodlegends.com<br />
+        Theme: purple, gold, castle fantasy.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
