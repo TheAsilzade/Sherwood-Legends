@@ -11,6 +11,9 @@
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Asilzade" />
   <meta name="theme-color" content="#120822" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
   <link rel="canonical" href="https://sherwoodlegends.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Sherwood Legends | Fantasy MMORPG" />
@@ -184,8 +187,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(330px, 0.96fr);
-      gap: 26px;
+      grid-template-columns: minmax(0, 0.98fr) minmax(300px, 0.82fr);
+      gap: clamp(42px, 6vw, 90px);
       align-items: center;
     }
 
@@ -274,10 +277,11 @@
 
     .stage {
       position: relative;
-      min-height: 610px;
+      min-height: 560px;
       display: grid;
       place-items: end center;
       isolation: isolate;
+      margin-left: clamp(12px, 3vw, 48px);
     }
 
     .stage::before {
@@ -295,7 +299,7 @@
     }
 
     .hero-character {
-      width: min(94%, 560px);
+      width: min(88%, 510px);
       aspect-ratio: 16 / 9;
       object-fit: cover;
       border: 1px solid rgba(243, 193, 94, 0.32);
@@ -309,7 +313,7 @@
       position: absolute;
       right: -3%;
       bottom: 2%;
-      width: min(48%, 280px);
+      width: min(42%, 240px);
       aspect-ratio: 16 / 9;
       object-fit: cover;
       border: 1px solid rgba(243, 193, 94, 0.28);
@@ -590,6 +594,7 @@
 
       .stage {
         min-height: 460px;
+        margin-left: 0;
       }
 
       .feature-grid,
