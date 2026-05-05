@@ -19,7 +19,7 @@
     content="Enter a purple-and-gold fantasy MMORPG world shaped by Asilzade and Noblesse Ltc."
   />
   <meta property="og:url" content="https://sherwoodlegends.com/" />
-  <meta property="og:image" content="https://sherwoodlegends.com/assets/warrior.png" />
+  <meta property="og:image" content="https://sherwoodlegends.com/assets/valkyrie-screen.jpg" />
   <meta property="og:site_name" content="Sherwood Legends" />
   <style>
     :root {
@@ -296,16 +296,26 @@
 
     .hero-character {
       width: min(94%, 560px);
-      filter: drop-shadow(0 34px 36px rgba(0, 0, 0, 0.64));
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border: 1px solid rgba(243, 193, 94, 0.32);
+      border-radius: 8px;
+      box-shadow:
+        0 34px 36px rgba(0, 0, 0, 0.54),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 
     .floating-beast {
       position: absolute;
       right: -3%;
-      bottom: 3%;
-      width: min(38%, 230px);
+      bottom: 2%;
+      width: min(48%, 280px);
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border: 1px solid rgba(243, 193, 94, 0.28);
+      border-radius: 8px;
       opacity: 0.94;
-      filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.48));
+      box-shadow: 0 22px 28px rgba(0, 0, 0, 0.48);
     }
 
     .ribbon {
@@ -431,8 +441,7 @@
       width: 100%;
       height: 100%;
       min-height: 230px;
-      object-fit: contain;
-      padding: 8px;
+      object-fit: cover;
       border-radius: 6px;
       background:
         radial-gradient(circle at center, rgba(142, 85, 255, 0.16), transparent 58%),
@@ -463,10 +472,9 @@
     .character-card img {
       width: 100%;
       height: 230px;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center bottom;
-      padding: 10px 8px 0;
-      filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.48));
+      padding: 0;
     }
 
     .character-card div {
@@ -612,8 +620,8 @@
         </div>
 
         <div class="stage" aria-hidden="true">
-          <img class="hero-character" src="./assets/warrior.png" alt="" />
-          <img class="floating-beast" src="./assets/griffin.png" alt="" />
+          <img class="hero-character" src="./assets/valkyrie-screen.jpg" alt="Sherwood Legends fantasy castle scene" />
+          <img class="floating-beast" src="./assets/dragon-screen.jpg" alt="Dragon battle scene" />
         </div>
       </div>
     </section>
@@ -675,10 +683,10 @@
         </article>
 
         <div class="scene" aria-label="Sherwood Legends creature and character art">
-          <img src="./assets/tiger.png" alt="Tiger pet render" />
-          <img src="./assets/minotaur.png" alt="Minotaur render" />
-          <img src="./assets/huntresss.png" alt="Huntress render" />
-          <img src="./assets/seal.png" alt="Seal pet render" />
+          <img src="./assets/dark-knight-screen.jpg" alt="Dark knight scene" />
+          <img src="./assets/ranger-screen.jpg" alt="Ranger scene" />
+          <img src="./assets/viking-screen.jpg" alt="Viking scene" />
+          <img src="./assets/dragon-screen.jpg" alt="Dragon scene" />
         </div>
       </div>
     </section>
@@ -687,40 +695,40 @@
       <div class="wrap">
         <div class="section-title">
           <div class="overline">Heroes</div>
-          <h2>Choose your look and carry your progress.</h2>
+          <h2>Classic Sherwood scenes, rebuilt for a new realm.</h2>
           <p>
-            Warriors, paladins, warlocks, huntresses, vikings, skeletons, beasts, and custom variants are part of
-            the long-term visual direction for Sherwood Legends.
+            The site now uses normal Sherwood-style screenshots instead of internal texture or model preview images,
+            keeping the public face closer to the fantasy MMO atmosphere.
           </p>
         </div>
 
         <div class="character-grid">
           <article class="character-card">
-            <figure><img src="./assets/pladin.png" alt="Paladin character" /></figure>
+            <figure><img src="./assets/valkyrie-screen.jpg" alt="Valkyrie scene" /></figure>
             <div>
-              <h3>Paladin</h3>
-              <p>Gold-lined armor for players who want a knightly presence in the castle halls.</p>
+              <h3>Castle Realm</h3>
+              <p>Adventure spaces shaped around castles, raids, clans, and open-world fantasy movement.</p>
             </div>
           </article>
           <article class="character-card">
-            <figure><img src="./assets/youngwarlock.png" alt="Warlock character" /></figure>
+            <figure><img src="./assets/dragon-screen.jpg" alt="Dragon battle" /></figure>
             <div>
-              <h3>Warlock</h3>
-              <p>A darker caster silhouette suited for dungeon runs and high-magic roleplay.</p>
+              <h3>Dragon Hunts</h3>
+              <p>Large fantasy creatures, dungeon danger, and group fights give the world its bigger scale.</p>
             </div>
           </article>
           <article class="character-card">
-            <figure><img src="./assets/vikingg.png" alt="Viking character" /></figure>
+            <figure><img src="./assets/dark-knight-screen.jpg" alt="Dark knight combat" /></figure>
             <div>
-              <h3>Viking</h3>
-              <p>Heavy northern armor made for raids, duels, and frontline clan identity.</p>
+              <h3>Dark Knights</h3>
+              <p>Real-time combat remains the center: timing, equipment, movement, and pressure.</p>
             </div>
           </article>
           <article class="character-card">
-            <figure><img src="./assets/skeleton.png" alt="Skeleton character" /></figure>
+            <figure><img src="./assets/ranger-screen.jpg" alt="Ranger scene" /></figure>
             <div>
-              <h3>Skeleton</h3>
-              <p>An undead avatar direction for players who want a sharper fantasy look.</p>
+              <h3>Rangers</h3>
+              <p>Exploration and character identity stay readable through clean fantasy screenshots.</p>
             </div>
           </article>
         </div>
