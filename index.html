@@ -309,6 +309,21 @@
         inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 
+    .hero-emblem {
+      position: absolute;
+      top: clamp(34px, 9%, 70px);
+      left: 50%;
+      z-index: 2;
+      width: min(44%, 230px);
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 18px;
+      filter:
+        drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55))
+        drop-shadow(0 0 24px rgba(243, 193, 94, 0.14));
+      transform: translateX(-50%);
+    }
+
     .floating-beast {
       position: absolute;
       right: -3%;
@@ -597,6 +612,11 @@
         margin-left: 0;
       }
 
+      .hero-emblem {
+        top: 20px;
+        width: min(36%, 170px);
+      }
+
       .feature-grid,
       .media-grid,
       .character-grid {
@@ -679,6 +699,7 @@
         </div>
 
         <div class="stage" aria-hidden="true">
+          <img class="hero-emblem" src="./assets/site-icon.png" alt="" />
           <img class="hero-character" src="./assets/valkyrie-screen.jpg" alt="Sherwood Legends fantasy castle scene" />
           <img class="floating-beast" src="./assets/dragon-screen.jpg" alt="Dragon battle scene" />
         </div>
