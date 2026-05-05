@@ -10,7 +10,7 @@ Sherwood Legends is a fantasy MMORPG website for the custom Sherwood Legends rea
 - Company: Noblesse Ltc.
 - Theme: dark purple, gold, castle fantasy
 - Domain: `sherwoodlegends.com`
-- Current feature messaging: three new weapons, expanded pet textures and colors, mob texture refreshes, four graphics modes, animated harbor ship, Teleport 1 theme modes, Teleport 14 Raider's Battleground, raid scoreboard/team systems, PvP duel variants, and the Heavenly Assasin pet.
+- Current feature messaging: three new weapons, expanded pet textures and colors, mob texture refreshes, four graphics modes, animated harbor ship, redesigned Teleport 1 with four theme modes, Teleport 14 Raider's Battleground, raid scoreboard/team systems, PvP duel variants, and the Heavenly Assasin pet.
 
 ## Files
 

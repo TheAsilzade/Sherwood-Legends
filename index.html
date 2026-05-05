@@ -514,6 +514,14 @@
       border-bottom: 1px solid var(--line-soft);
     }
 
+    .media-card.contain img {
+      object-fit: contain;
+      padding: 12px;
+      background:
+        radial-gradient(circle at center, rgba(142, 85, 255, 0.12), transparent 58%),
+        rgba(0, 0, 0, 0.28);
+    }
+
     .media-card div {
       padding: 18px;
     }
@@ -639,7 +647,7 @@
         </div>
       </a>
       <nav class="navlinks" aria-label="Primary navigation">
-        <a href="#updates">Updates</a>
+        <a href="#features">Features</a>
         <a href="#world">World</a>
         <a href="#combat">Combat</a>
         <a href="#heroes">Heroes</a>
@@ -679,15 +687,15 @@
       <div>Animated Ship</div>
     </div>
 
-    <section id="updates">
+    <section id="features">
       <div class="wrap">
         <div class="section-title">
-          <div class="overline">Latest Realm Update</div>
-          <h2>Weapons, pets, graphics, raids, and moving world systems.</h2>
+          <div class="overline">Core Game Features</div>
+          <h2>Sherwood Legends launches with weapons, pets, graphics, raids, and moving world systems.</h2>
           <p>
-            Sherwood Legends now has a larger custom feature set: three new weapon models, expanded pet textures
-            and color choices, refreshed monster visuals, a moving harbor ship, multiple graphics modes, new PvP
-            variants, and a raid-ready battleground system.
+            Sherwood Legends is built with a larger custom feature set from the start: three new weapon models,
+            expanded pet textures and color choices, refreshed monster visuals, a moving harbor ship, multiple
+            graphics modes, new PvP variants, and a raid-ready battleground system.
           </p>
         </div>
 
@@ -709,8 +717,8 @@
             <p>The visual pipeline now offers four different graphics profiles, from lighter classic play to richer HD-style shader presentation.</p>
           </article>
           <article class="feature">
-            <strong>Teleport 1 Themes</strong>
-            <p>Sherwood Castle now supports four different theme modes, allowing players to choose the atmosphere they want for Teleport 1.</p>
+            <strong>Teleport 1 Redesign</strong>
+            <p>Teleport 1 has been redesigned with four different Sherwood Castle theme modes, letting players choose the atmosphere they want.</p>
           </article>
           <article class="feature">
             <strong>Raid Systems</strong>
@@ -719,25 +727,25 @@
         </div>
 
         <div class="media-grid">
-          <article class="media-card">
+          <article class="media-card contain">
             <img src="./assets/texture-expansion.png" alt="Sherwood Legends texture and color expansion showcase" />
             <div>
-              <strong>Texture and Color Showcase</strong>
-              <p>A public-facing showcase image for pet colors, mob refreshes, weapon finishes, and HD graphics modes without exposing raw game texture atlases.</p>
+              <strong>Game Visual Showcase</strong>
+              <p>A game-focused showcase for pet colors, mob refreshes, weapon finishes, HD graphics modes, Teleport 1 redesign, and raid systems.</p>
             </div>
           </article>
           <article class="media-card">
             <img src="./assets/ship-orbit.png" alt="Animated ship in Sherwood Legends harbor" />
             <div>
               <strong>Animated Harbor Ship</strong>
-              <p>The ship now has a world animation path and can sail around the map area, creating a more alive Teleport 1 harbor scene.</p>
+              <p>The ship uses a world animation path and can sail around the map area, creating a more alive Teleport 1 harbor scene.</p>
             </div>
           </article>
-          <article class="media-card">
+          <article class="media-card contain">
             <img src="./assets/scoreboard-hud.png" alt="Raid scoreboard HUD concept" />
             <div>
               <strong>Scoreboard HUD</strong>
-              <p>The new raid direction includes team split logic, scoreboard presentation, and a victory mechanism for structured raid matches.</p>
+              <p>Raid mode includes team split logic, scoreboard presentation, and a victory mechanism for structured raid matches.</p>
             </div>
           </article>
         </div>
@@ -763,7 +771,7 @@
           </article>
           <article class="feature">
             <strong>Castle Theme Modes</strong>
-            <p>Teleport 1 supports four selectable themes, so Sherwood Castle can shift between different moods without changing the core map.</p>
+            <p>Teleport 1 has been redesigned and supports four selectable themes, so Sherwood Castle can shift between different moods without changing the core map.</p>
           </article>
           <article class="feature">
             <strong>Living Map Objects</strong>
