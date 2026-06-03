@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sherwood Legends | Fantasy MMORPG by Asilzade</title>
-  <meta
-    name="description"
-    content="Sherwood Legends is a dark fantasy MMORPG world by Asilzade and Noblesse Ltc., built around open-world adventure, real-time combat, pets, mounts, weapons, and clan battles."
-  />
+  <meta name="description" content="Sherwood Legends is a dark fantasy MMORPG world by Asilzade and Noblesse Ltc., built around open-world adventure, real-time combat, pets, mounts, weapons, and clan battles." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Asilzade" />
   <meta name="theme-color" content="#120822" />
@@ -17,955 +14,1161 @@
   <link rel="canonical" href="https://sherwoodlegends.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Sherwood Legends | Fantasy MMORPG" />
-  <meta
-    property="og:description"
-    content="Enter a purple-and-gold fantasy MMORPG world shaped by Asilzade and Noblesse Ltc."
-  />
+  <meta property="og:description" content="Enter a purple-and-gold fantasy MMORPG world shaped by Asilzade and Noblesse Ltc." />
   <meta property="og:url" content="https://sherwoodlegends.com/" />
   <meta property="og:image" content="https://sherwoodlegends.com/assets/valkyrie-screen.jpg" />
   <meta property="og:site_name" content="Sherwood Legends" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
   <style>
+    /* ── TOKENS ─────────────────────────────── */
     :root {
-      --bg: #08050d;
-      --bg-2: #120822;
-      --panel: rgba(19, 10, 31, 0.78);
-      --panel-2: rgba(255, 255, 255, 0.055);
-      --gold: #f3c15e;
-      --gold-2: #b57a25;
-      --purple: #8e55ff;
-      --purple-2: #3a1868;
-      --text: #fff5df;
-      --muted: #cbbddf;
-      --line: rgba(243, 193, 94, 0.25);
-      --line-soft: rgba(255, 255, 255, 0.11);
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.46);
-      --max: 1180px;
-      --font: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
-      --display: Georgia, "Times New Roman", serif;
+      --bg:     #07030f;
+      --bg2:    #0d051a;
+      --surf:   rgba(12,5,22,0.9);
+      --gold:   #f3c15e;
+      --gold2:  #b57a25;
+      --gold3:  #ffe4a0;
+      --pur:    #8e55ff;
+      --pur2:   #3a1868;
+      --pur3:   #c4a0ff;
+      --txt:    #fff5df;
+      --muted:  #cbbddf;
+      --dim:    #7a6a90;
+      --line:   rgba(243,193,94,0.22);
+      --line2:  rgba(255,255,255,0.07);
+      --max:    1180px;
+      --fn:     "Crimson Text", Georgia, serif;
+      --fd:     "Cinzel", Georgia, serif;
+      --fu:     "Trebuchet MS","Segoe UI",Arial,sans-serif;
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
     html {
-      scroll-behavior: smooth;
-      background: var(--bg);
+      scroll-behavior:smooth;
+      background:var(--bg);
+      scrollbar-width:thin;
+      scrollbar-color:rgba(243,193,94,.28) rgba(7,3,15,.8);
     }
-
     body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--text);
-      font-family: var(--font);
+      color:var(--txt);
+      font-family:var(--fn);
+      font-size:1.05rem;
+      line-height:1.82;
+      overflow-x:hidden;
       background:
-        radial-gradient(circle at 52% 3%, rgba(243, 193, 94, 0.15), transparent 22%),
-        radial-gradient(circle at 18% 18%, rgba(142, 85, 255, 0.22), transparent 28%),
-        radial-gradient(circle at 86% 12%, rgba(181, 122, 37, 0.12), transparent 24%),
-        linear-gradient(180deg, #180b2b 0%, #0d0617 42%, #050308 100%);
-      overflow-x: hidden;
+        radial-gradient(ellipse 90% 46% at 14% 0%,rgba(142,85,255,.22),transparent),
+        radial-gradient(ellipse 55% 32% at 88% 0%,rgba(243,193,94,.13),transparent),
+        linear-gradient(180deg,#17082a 0%,#0c0418 38%,#060210 100%);
+    }
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; display:block; }
+
+    /* ── GRAIN ───────────────────────────────── */
+    .grain {
+      position:fixed; inset:-150px;
+      width:calc(100% + 300px); height:calc(100% + 300px);
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      background-size:240px 240px;
+      opacity:.07; pointer-events:none; z-index:9999;
+      animation:grain .32s steps(7) infinite;
+    }
+    @keyframes grain {
+      0%   {transform:translate(0,0)}
+      14%  {transform:translate(-3%,-2%)}
+      28%  {transform:translate(2%,-4%)}
+      42%  {transform:translate(-4%,3%)}
+      57%  {transform:translate(3%,1%)}
+      71%  {transform:translate(-1%,4%)}
+      85%  {transform:translate(2%,-3%)}
+      100% {transform:translate(-2%,2%)}
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.22;
-      background-image:
-        linear-gradient(rgba(243, 193, 94, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(243, 193, 94, 0.06) 1px, transparent 1px);
-      background-size: 58px 58px;
-      mask-image: linear-gradient(180deg, black, transparent 82%);
-    }
-
-    a {
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
+    /* ── LAYOUT ──────────────────────────────── */
     .wrap {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
+      width:min(calc(100% - 40px), var(--max));
+      margin:0 auto; position:relative; z-index:1;
     }
 
+    /* ── SCROLL REVEAL ───────────────────────── */
+    [data-reveal] {
+      opacity:0;
+      transform:translate3d(0,40px,0);
+      transition:opacity .95s cubic-bezier(.215,.61,.355,1), transform 1.3s cubic-bezier(.215,.61,.355,1);
+    }
+    [data-reveal="left"]  { transform:translate3d(-40px,0,0); }
+    [data-reveal="right"] { transform:translate3d(40px,0,0); }
+    [data-reveal].in { opacity:1; transform:translate3d(0,0,0); }
+    [data-d="1"]{transition-delay:.1s} [data-d="2"]{transition-delay:.22s}
+    [data-d="3"]{transition-delay:.36s} [data-d="4"]{transition-delay:.52s}
+    [data-d="5"]{transition-delay:.68s} [data-d="6"]{transition-delay:.84s}
+
+    /* ── NAV ─────────────────────────────────── */
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 1px solid var(--line);
-      background: rgba(8, 5, 13, 0.82);
-      backdrop-filter: blur(18px);
+      position:sticky; top:0; z-index:200;
+      background:rgba(7,3,15,.9);
+      backdrop-filter:blur(22px);
     }
-
+    .topbar::after {
+      content:""; display:block; height:1px;
+      background:linear-gradient(90deg,transparent 0%,rgba(243,193,94,.45) 35%,rgba(142,85,255,.35) 65%,transparent 100%);
+    }
     .nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
+      display:flex; align-items:center; justify-content:space-between;
+      min-height:70px; gap:20px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
+    .brand { display:flex; align-items:center; gap:14px; }
+    .brand-crest {
+      width:44px; height:44px; border-radius:10px;
+      border:1px solid var(--line);
+      background:linear-gradient(145deg,rgba(243,193,94,.16),rgba(142,85,255,.1));
+      display:grid; place-items:center;
+      box-shadow:0 0 24px rgba(243,193,94,.07),inset 0 0 18px rgba(142,85,255,.09);
+      flex-shrink:0;
     }
-
-    .crest {
-      width: 50px;
-      height: 50px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      color: var(--gold);
-      font-family: var(--display);
-      font-size: 1.2rem;
-      font-weight: 700;
-      background:
-        linear-gradient(145deg, rgba(243, 193, 94, 0.18), rgba(142, 85, 255, 0.12)),
-        rgba(255, 255, 255, 0.04);
-      box-shadow: inset 0 0 18px rgba(243, 193, 94, 0.12), 0 0 22px rgba(142, 85, 255, 0.16);
+    .brand-crest img { width:36px; height:36px; object-fit:contain; border-radius:7px; }
+    .brand-name {
+      font-family:var(--fd); font-size:.88rem; font-weight:700;
+      letter-spacing:.14em; text-transform:uppercase; color:var(--gold);
     }
-
-    .crest img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      border-radius: 9px;
+    .brand-by {
+      display:block; font-family:var(--fu); font-size:.66rem;
+      letter-spacing:.18em; text-transform:uppercase; color:var(--dim); margin-top:2px;
     }
-
-    .brand strong {
-      display: block;
-      color: var(--gold);
-      font-size: 0.96rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .brand span {
-      color: var(--muted);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .navlinks {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-
+    .navlinks { display:flex; align-items:center; gap:2px; }
     .navlinks a {
-      padding: 10px 12px;
-      border: 1px solid transparent;
-      border-radius: 6px;
-      color: var(--gold);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-decoration: none;
-      text-transform: uppercase;
-      text-shadow: 0 0 14px rgba(243, 193, 94, 0.12);
-      transition:
-        transform 0.22s ease,
-        color 0.22s ease,
-        background 0.22s ease,
-        border-color 0.22s ease,
-        box-shadow 0.22s ease;
+      font-family:var(--fd); font-size:.68rem; font-weight:600;
+      letter-spacing:.16em; text-transform:uppercase;
+      color:var(--dim); padding:8px 14px; border-radius:4px;
+      border:1px solid transparent;
+      transition:color .2s,border-color .2s,background .2s;
+    }
+    .navlinks a:hover {
+      color:var(--gold); border-color:var(--line);
+      background:rgba(243,193,94,.06);
     }
 
-    .navlinks a:hover,
-    .navlinks a:focus-visible {
-      transform: translateY(-2px);
-      border-color: rgba(243, 193, 94, 0.48);
-      color: #fff1c7;
-      background: linear-gradient(180deg, rgba(243, 193, 94, 0.16), rgba(181, 122, 37, 0.08));
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 10px 24px rgba(0, 0, 0, 0.24),
-        0 0 20px rgba(243, 193, 94, 0.12);
-    }
-
-    .navlinks a:active {
-      transform: translateY(0);
-      color: #180a28;
-      background: linear-gradient(180deg, #ffe09a, #c1842c);
-    }
-
+    /* ── HERO ────────────────────────────────── */
     .hero {
-      min-height: calc(100vh - 76px);
-      display: grid;
-      align-items: center;
-      padding: 46px 0 34px;
-      position: relative;
+      position:relative; min-height:100svh;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; overflow:hidden;
     }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 0.98fr) minmax(300px, 0.82fr);
-      gap: clamp(42px, 6vw, 90px);
-      align-items: center;
+    .hero-bg {
+      position:absolute; inset:0; z-index:0;
     }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-      color: var(--gold);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+    .hero-bg img {
+      width:100%; height:100%; object-fit:cover; object-position:center 28%;
+      filter:saturate(.55) brightness(.22);
+      animation:hzoom 22s ease-in-out infinite alternate;
     }
-
-    .eyebrow::before {
-      content: "";
-      width: 42px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--gold), transparent);
+    @keyframes hzoom {
+      from {transform:scale(1.05)}
+      to   {transform:scale(1.13)}
     }
-
+    .hero-bg::after {
+      content:""; position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 65% 52% at 50% 48%,rgba(142,85,255,.26),transparent),
+        linear-gradient(180deg,
+          rgba(7,3,15,.22) 0%,
+          rgba(7,3,15,.04) 26%,
+          rgba(7,3,15,.08) 60%,
+          rgba(7,3,15,.86) 84%,
+          #07030f 100%
+        );
+    }
+    .hero-inner {
+      position:relative; z-index:2;
+      max-width:900px; padding:0 20px;
+    }
+    .hero-eyebrow {
+      display:inline-flex; align-items:center; gap:16px;
+      margin-bottom:22px;
+      font-family:var(--fu); font-size:.72rem; font-weight:800;
+      letter-spacing:.26em; text-transform:uppercase; color:var(--gold);
+      opacity:0;
+      animation:fadeup .9s cubic-bezier(.215,.61,.355,1) .55s forwards;
+    }
+    .hero-eyebrow span { opacity:.5; }
     h1 {
-      margin: 0;
-      max-width: 10ch;
-      font-family: var(--display);
-      font-size: clamp(4.5rem, 9vw, 8.4rem);
-      line-height: 0.82;
-      color: #fff1c7;
-      text-shadow:
-        0 3px 0 rgba(55, 23, 96, 0.6),
-        0 0 28px rgba(243, 193, 94, 0.18),
-        0 0 64px rgba(142, 85, 255, 0.2);
+      font-family:var(--fd); font-size:clamp(4rem,9.5vw,8.8rem);
+      font-weight:900; line-height:.88; color:#fff8e6;
+      letter-spacing:.04em;
+      text-shadow:0 4px 0 rgba(55,23,96,.7),0 0 60px rgba(243,193,94,.2),0 0 120px rgba(142,85,255,.22);
+      opacity:0;
+      transform:perspective(1200px) translate3d(0,72px,-60px) rotateX(-15deg);
+      animation:titlerise 1.6s cubic-bezier(.19,1,.22,1) .12s forwards;
+    }
+    .hero-sub {
+      display:block;
+      font-family:var(--fd); font-size:clamp(1rem,2.2vw,1.8rem);
+      font-weight:400; letter-spacing:.4em; text-transform:uppercase;
+      color:var(--gold); margin-top:8px;
+      text-shadow:0 0 44px rgba(243,193,94,.5);
+    }
+    .hero-desc {
+      max-width:620px; margin:30px auto 0;
+      color:#ddd0f2; font-size:clamp(1.04rem,1.6vw,1.16rem);
+      font-style:italic; line-height:1.92;
+      opacity:0;
+      animation:fadeup 1s cubic-bezier(.215,.61,.355,1) .92s forwards;
+    }
+    .hero-cta {
+      display:flex; align-items:center; justify-content:center;
+      flex-wrap:wrap; gap:14px; margin-top:42px;
+      opacity:0;
+      animation:fadeup .9s cubic-bezier(.215,.61,.355,1) 1.22s forwards;
+    }
+    .hero-scroll {
+      position:absolute; bottom:34px; left:50%;
+      transform:translateX(-50%); z-index:2;
+      display:flex; flex-direction:column; align-items:center; gap:10px;
+      font-family:var(--fu); font-size:.64rem;
+      letter-spacing:.26em; text-transform:uppercase; color:var(--dim);
+      opacity:0; animation:fadeup .8s ease 1.9s forwards;
+    }
+    .scroll-rod {
+      width:1px; height:50px;
+      background:linear-gradient(180deg,transparent,var(--gold));
+      animation:rodpulse 2.5s cubic-bezier(.4,0,.2,1) infinite;
+    }
+    @keyframes rodpulse {
+      0%,100%{transform:scaleY(.3) translateY(-10px);opacity:.18}
+      50%    {transform:scaleY(1) translateY(0);opacity:.65}
+    }
+    @keyframes fadeup {
+      from{opacity:0;transform:translateY(20px)}
+      to  {opacity:1;transform:translateY(0)}
+    }
+    @keyframes titlerise {
+      from{opacity:0;transform:perspective(1200px) translate3d(0,72px,-60px) rotateX(-15deg)}
+      to  {opacity:1;transform:perspective(1200px) translate3d(0,0,0) rotateX(0deg)}
     }
 
-    .tagline {
-      max-width: 660px;
-      margin: 24px 0 0;
-      color: #e4d8f7;
-      font-size: clamp(1rem, 1.8vw, 1.16rem);
-      line-height: 1.86;
-    }
-
-    .hero-actions,
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
+    /* ── BUTTONS ─────────────────────────────── */
     .btn {
-      min-height: 50px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 18px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background:
-        linear-gradient(180deg, rgba(243, 193, 94, 0.16), rgba(181, 122, 37, 0.1)),
-        rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      font-size: 0.88rem;
-      font-weight: 900;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+      display:inline-flex; align-items:center; gap:10px;
+      min-height:52px; padding:0 28px;
+      border-radius:4px; border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--txt); font-family:var(--fd);
+      font-size:.72rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+      cursor:pointer;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+      transition:transform .2s,border-color .2s,background .2s,box-shadow .2s;
     }
-
     .btn:hover {
-      transform: translateY(-2px);
-      border-color: rgba(243, 193, 94, 0.56);
-      background:
-        linear-gradient(180deg, rgba(243, 193, 94, 0.3), rgba(181, 122, 37, 0.16)),
-        rgba(255, 255, 255, 0.06);
+      transform:translateY(-3px);
+      border-color:rgba(243,193,94,.5);
+      background:rgba(243,193,94,.08);
+      box-shadow:0 12px 30px rgba(0,0,0,.32),0 0 24px rgba(243,193,94,.1);
     }
-
+    .btn:active { transform:translateY(0); }
     .btn.primary {
-      color: #180a28;
-      background: linear-gradient(180deg, #ffe09a, #c1842c);
-      border-color: rgba(255, 226, 157, 0.78);
+      background:linear-gradient(165deg,#f5c96a,#c07824);
+      border-color:rgba(255,226,154,.62);
+      color:#1b0a2e; font-weight:700;
+      box-shadow:0 0 36px rgba(243,193,94,.26),inset 0 1px 0 rgba(255,255,255,.2);
+    }
+    .btn.primary:hover {
+      background:linear-gradient(165deg,#ffd978,#c9892c);
+      box-shadow:0 12px 34px rgba(0,0,0,.3),0 0 48px rgba(243,193,94,.38);
     }
 
-    .stage {
-      position: relative;
-      min-height: 560px;
-      display: grid;
-      place-items: end center;
-      isolation: isolate;
-      margin-left: clamp(12px, 3vw, 48px);
+    /* ── SEALS ───────────────────────────────── */
+    .seals-wrap {
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:rgba(7,3,15,.95);
+      position:relative; z-index:2;
+      overflow:hidden;
+    }
+    .seals-wrap::before {
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(90deg,rgba(142,85,255,.07),rgba(243,193,94,.04),rgba(142,85,255,.07));
+    }
+    .seals-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      background:var(--line); gap:1px;
+    }
+    .seal {
+      background:rgba(7,3,15,.96);
+      padding:30px 18px;
+      display:flex; flex-direction:column; align-items:center; gap:8px;
+      text-align:center; position:relative;
+    }
+    .seal-icon-ring {
+      position:relative; width:46px; height:46px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .seal-icon-ring::before, .seal-icon-ring::after {
+      content:""; position:absolute; inset:0; border-radius:50%;
+      border:1px solid rgba(243,193,94,.55);
+      animation:rpulse 3.2s ease-out infinite;
+    }
+    .seal-icon-ring::after { animation-delay:1.6s; }
+    .seal:nth-child(2) .seal-icon-ring::before{animation-delay:.5s}
+    .seal:nth-child(2) .seal-icon-ring::after {animation-delay:2.1s}
+    .seal:nth-child(3) .seal-icon-ring::before{animation-delay:1s}
+    .seal:nth-child(3) .seal-icon-ring::after {animation-delay:2.6s}
+    .seal:nth-child(4) .seal-icon-ring::before{animation-delay:1.5s}
+    .seal:nth-child(4) .seal-icon-ring::after {animation-delay:3.1s}
+    @keyframes rpulse {
+      0%  {transform:scale(.5);opacity:.72}
+      80% {opacity:.08}
+      100%{transform:scale(2.2);opacity:0}
+    }
+    .seal-svg {
+      width:24px; height:24px; color:var(--gold);
+      position:relative; z-index:1; flex-shrink:0;
+    }
+    .seal-val {
+      font-family:var(--fd); font-size:1.5rem; font-weight:700;
+      color:var(--gold); letter-spacing:.06em; line-height:1;
+    }
+    .seal-lbl {
+      font-family:var(--fu); font-size:.63rem; font-weight:800;
+      letter-spacing:.2em; text-transform:uppercase; color:var(--dim);
     }
 
-    .stage::before {
-      content: "";
-      position: absolute;
-      inset: 11% 4% 4%;
-      z-index: -1;
-      border: 1px solid rgba(243, 193, 94, 0.18);
-      border-radius: 8px;
-      background:
-        linear-gradient(180deg, rgba(142, 85, 255, 0.12), rgba(8, 5, 13, 0.68)),
-        rgba(255, 255, 255, 0.035);
-      box-shadow: var(--shadow), inset 0 0 80px rgba(142, 85, 255, 0.1);
-      transform: skewY(-2deg);
-    }
+    /* ── SECTION BASE ────────────────────────── */
+    .section { padding:108px 0; position:relative; z-index:1; }
 
-    .hero-character {
-      width: min(88%, 510px);
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      border: 1px solid rgba(243, 193, 94, 0.32);
-      border-radius: 8px;
-      box-shadow:
-        0 34px 36px rgba(0, 0, 0, 0.54),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-      transform: translateY(-22px);
-    }
-
-    .hero-emblem {
-      position: absolute;
-      top: clamp(22px, 6%, 52px);
-      left: 50%;
-      z-index: 2;
-      width: min(54%, 295px);
-      aspect-ratio: 1;
-      object-fit: contain;
-      border-radius: 18px;
-      filter:
-        drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55))
-        drop-shadow(0 0 24px rgba(243, 193, 94, 0.14));
-      transform: translateX(-50%);
-    }
-
-    .floating-beast {
-      position: absolute;
-      right: -3%;
-      bottom: 6%;
-      width: min(42%, 240px);
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      border: 1px solid rgba(243, 193, 94, 0.28);
-      border-radius: 8px;
-      opacity: 0.94;
-      box-shadow: 0 22px 28px rgba(0, 0, 0, 0.48);
-    }
-
-    .ribbon {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: var(--line);
-    }
-
-    .ribbon div {
-      min-height: 98px;
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      background: rgba(8, 5, 13, 0.82);
-      color: var(--gold);
-      font-size: 0.83rem;
-      font-weight: 900;
-      letter-spacing: 0.16em;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    section {
-      padding: 72px 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-title {
-      max-width: 760px;
-      margin-bottom: 28px;
-    }
+    .sec-hd { margin-bottom:58px; max-width:680px; }
+    .sec-hd.center { text-align:center; margin-left:auto; margin-right:auto; }
 
     .overline {
-      color: var(--gold);
-      font-size: 0.76rem;
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      display:inline-flex; align-items:center; gap:12px;
+      font-family:var(--fu); font-size:.68rem; font-weight:900;
+      letter-spacing:.26em; text-transform:uppercase; color:var(--gold);
+      margin-bottom:14px;
     }
-
+    .overline::before {
+      content:""; width:36px; height:1px;
+      background:linear-gradient(90deg,transparent,var(--gold));
+      opacity:.6;
+    }
     h2 {
-      margin: 10px 0 0;
-      color: #fff1c7;
-      font-family: var(--display);
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: 0.92;
+      font-family:var(--fd); font-size:clamp(2.4rem,4.8vw,4rem);
+      font-weight:700; color:#fff8e6; line-height:.92; letter-spacing:.02em;
+    }
+    .sec-hd p {
+      margin-top:18px; color:var(--muted);
+      font-size:1.06rem; line-height:1.86; font-style:italic;
     }
 
-    .section-title p {
-      margin: 16px 0 0;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.82;
+    /* ── DIVIDER ─────────────────────────────── */
+    .divider {
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--line) 30%,rgba(142,85,255,.3) 70%,transparent);
+      margin:0;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+    /* ── CODEX (features) ────────────────────── */
+    .codex-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1px;
+      background:var(--line2);
+      border:1px solid var(--line2);
+      border-radius:10px;
+      overflow:hidden;
+    }
+    .codex-entry {
+      background:var(--surf);
+      padding:32px 26px;
+      position:relative; overflow:hidden;
+      transition:background .3s;
+    }
+    .codex-entry::before {
+      content:""; position:absolute; top:0; left:0; right:0;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(243,193,94,.35),transparent);
+      opacity:0; transition:opacity .3s;
+    }
+    .codex-entry:hover { background:rgba(20,9,38,.96); }
+    .codex-entry:hover::before { opacity:1; }
+    .codex-num {
+      font-family:var(--fd); font-size:.65rem; font-weight:700;
+      letter-spacing:.22em; color:rgba(243,193,94,.35);
+      margin-bottom:14px;
+    }
+    .codex-entry h3 {
+      font-family:var(--fd); font-size:1.05rem; font-weight:700;
+      color:var(--gold); letter-spacing:.04em; margin-bottom:12px;
+    }
+    .codex-entry p {
+      color:var(--muted); font-size:.98rem; line-height:1.78;
+    }
+    .codex-accent {
+      position:absolute; bottom:-18px; right:-18px;
+      width:80px; height:80px; border-radius:50%;
+      background:radial-gradient(circle,rgba(142,85,255,.12),transparent 70%);
+      pointer-events:none;
     }
 
-    .feature,
-    .panel,
-    .character-card {
-      border: 1px solid var(--line-soft);
-      border-radius: 8px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)),
-        rgba(19, 10, 31, 0.78);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 48px rgba(0, 0, 0, 0.28);
+    /* ── MEDIA STRIP (visual showcase) ──────── */
+    .media-strip {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px; margin-top:48px;
     }
-
-    .feature {
-      min-height: 230px;
-      padding: 22px;
-    }
-
-    .feature strong,
-    .panel strong {
-      display: block;
-      color: var(--gold);
-      font-size: 1.04rem;
-      letter-spacing: 0.02em;
-    }
-
-    .feature p,
-    .panel p,
-    .character-card p {
-      margin: 12px 0 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .showcase {
-      display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
-      gap: 16px;
-      align-items: stretch;
-    }
-
-    .panel {
-      padding: 28px;
-      overflow: hidden;
-    }
-
-    .scene {
-      min-height: 490px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      padding: 10px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.22);
-      box-shadow: var(--shadow);
-    }
-
-    .scene img {
-      width: 100%;
-      height: 100%;
-      min-height: 230px;
-      object-fit: cover;
-      border-radius: 6px;
-      background:
-        radial-gradient(circle at center, rgba(142, 85, 255, 0.16), transparent 58%),
-        rgba(255, 255, 255, 0.035);
-    }
-
-    .character-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .character-card {
-      overflow: hidden;
-      min-height: 328px;
-    }
-
-    .character-card figure {
-      margin: 0;
-      min-height: 220px;
-      display: grid;
-      place-items: end center;
-      background:
-        radial-gradient(circle at 50% 25%, rgba(243, 193, 94, 0.18), transparent 44%),
-        linear-gradient(180deg, rgba(142, 85, 255, 0.12), rgba(0, 0, 0, 0.16));
-    }
-
-    .character-card img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      object-position: center bottom;
-      padding: 0;
-    }
-
-    .character-card div {
-      padding: 16px;
-    }
-
-    .character-card h3 {
-      margin: 0;
-      color: var(--gold);
-      font-size: 1rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
-    }
-
     .media-card {
-      overflow: hidden;
-      border: 1px solid var(--line-soft);
-      border-radius: 8px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.03)),
-        rgba(19, 10, 31, 0.78);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 48px rgba(0, 0, 0, 0.28);
+      border-radius:8px; overflow:hidden;
+      border:1px solid var(--line2);
+      background:var(--surf);
+      transition:transform .3s, box-shadow .3s, border-color .3s;
     }
-
+    .media-card:hover {
+      transform:translateY(-4px);
+      border-color:rgba(243,193,94,.3);
+      box-shadow:0 24px 48px rgba(0,0,0,.4),0 0 28px rgba(142,85,255,.12);
+    }
+    .media-card figure {
+      position:relative; overflow:hidden;
+      background:radial-gradient(circle at center,rgba(142,85,255,.12),rgba(0,0,0,.3));
+    }
     .media-card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      background: rgba(0, 0, 0, 0.22);
-      border-bottom: 1px solid var(--line-soft);
+      width:100%; height:220px; object-fit:cover;
+      transition:transform .55s cubic-bezier(.25,.46,.45,.94);
     }
-
     .media-card.contain img {
-      object-fit: contain;
-      padding: 12px;
+      object-fit:contain; padding:14px; height:220px;
+    }
+    .media-card:hover img { transform:scale(1.05); }
+    .media-card-body { padding:22px; }
+    .media-card-body strong {
+      display:block; font-family:var(--fd); font-size:1rem;
+      letter-spacing:.06em; text-transform:uppercase; color:var(--gold);
+      margin-bottom:10px;
+    }
+    .media-card-body p { color:var(--muted); font-size:.96rem; line-height:1.76; }
+
+    /* ── REALM PORTALS ───────────────────────── */
+    .portals {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+    }
+    .portal {
+      position:relative; border-radius:10px; overflow:hidden;
+      min-height:400px;
+      border:1px solid var(--line2);
+      cursor:default;
+      transition:border-color .3s, box-shadow .3s;
+    }
+    .portal:hover {
+      border-color:rgba(243,193,94,.35);
+      box-shadow:0 28px 56px rgba(0,0,0,.48),0 0 36px rgba(142,85,255,.16);
+    }
+    .portal-img {
+      position:absolute; inset:0;
+    }
+    .portal-img img {
+      width:100%; height:100%; object-fit:cover;
+      filter:saturate(.6) brightness(.38);
+      transition:filter .55s, transform .55s cubic-bezier(.25,.46,.45,.94);
+    }
+    .portal:hover .portal-img img {
+      filter:saturate(.8) brightness(.52);
+      transform:scale(1.06);
+    }
+    .portal-img::after {
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(0deg,rgba(7,3,15,.96) 0%,rgba(7,3,15,.3) 50%,transparent 100%);
+      transition:background .4s;
+    }
+    .portal:hover .portal-img::after {
+      background:linear-gradient(0deg,rgba(7,3,15,.98) 0%,rgba(7,3,15,.45) 55%,rgba(142,85,255,.08) 100%);
+    }
+    .portal-body {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:28px 24px; z-index:1;
+    }
+    .portal-tag {
+      font-family:var(--fu); font-size:.62rem; font-weight:900;
+      letter-spacing:.24em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:10px; opacity:.75;
+    }
+    .portal h3 {
+      font-family:var(--fd); font-size:1.22rem; font-weight:700;
+      color:#fff8e6; letter-spacing:.04em; margin-bottom:12px;
+    }
+    .portal p {
+      color:var(--muted); font-size:.95rem; line-height:1.74;
+      max-height:0; overflow:hidden;
+      transition:max-height .45s cubic-bezier(.4,0,.2,1), opacity .35s;
+      opacity:0;
+    }
+    .portal:hover p { max-height:120px; opacity:1; }
+    .portal-frame {
+      position:absolute; inset:10px; border:1px solid rgba(243,193,94,.12);
+      border-radius:6px; pointer-events:none; z-index:1;
+      opacity:0; transition:opacity .35s;
+    }
+    .portal:hover .portal-frame { opacity:1; }
+
+    /* ── COMBAT ──────────────────────────────── */
+    .combat-layout {
+      display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start;
+    }
+    .combat-panel {
+      padding:38px 36px;
+      border:1px solid var(--line2); border-radius:10px;
+      background:var(--surf);
+    }
+    .combat-panel h2 { margin-bottom:20px; }
+    .combat-panel p {
+      color:var(--muted); font-size:1rem; line-height:1.84; margin-bottom:16px;
+    }
+    .combat-panel p:last-of-type { margin-bottom:0; }
+
+    /* duel tabs */
+    .duel-tabs {
+      display:flex; gap:2px; margin:28px 0 0;
+      border:1px solid var(--line); border-radius:6px;
+      background:rgba(0,0,0,.22); padding:4px;
+    }
+    .duel-tab {
+      flex:1; padding:10px 8px;
+      font-family:var(--fd); font-size:.68rem; font-weight:600;
+      letter-spacing:.14em; text-transform:uppercase;
+      color:var(--dim); border-radius:4px; border:1px solid transparent;
+      cursor:pointer; background:transparent;
+      transition:color .2s, background .2s, border-color .2s;
+    }
+    .duel-tab.active {
+      color:var(--gold); background:rgba(243,193,94,.1);
+      border-color:rgba(243,193,94,.28);
+    }
+    .duel-panels { margin-top:18px; }
+    .duel-panel { display:none; }
+    .duel-panel.active {
+      display:block;
+      animation:fadeup .35s ease forwards;
+    }
+    .duel-panel p {
+      color:var(--muted); font-size:.97rem; line-height:1.8; margin-bottom:0;
+    }
+
+    .combat-quad {
+      display:grid; grid-template-columns:1fr 1fr; gap:8px;
+    }
+    .combat-quad figure {
+      margin:0; border-radius:8px; overflow:hidden;
+      border:1px solid var(--line2);
+      position:relative;
+    }
+    .combat-quad img {
+      width:100%; height:100%; min-height:200px; object-fit:cover;
+      filter:saturate(.72) brightness(.88);
+      transition:filter .4s, transform .5s cubic-bezier(.25,.46,.45,.94);
+    }
+    .combat-quad figure:hover img {
+      filter:saturate(1) brightness(1);
+      transform:scale(1.04);
+    }
+    .combat-quad figcaption {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:10px 14px;
+      background:linear-gradient(0deg,rgba(7,3,15,.9),transparent);
+      font-family:var(--fd); font-size:.66rem; font-weight:600;
+      letter-spacing:.14em; text-transform:uppercase; color:var(--gold);
+    }
+
+    /* ── CHAMPIONS (was characters) ─────────── */
+    .champions-scroll-wrap {
+      overflow:hidden; position:relative;
+    }
+    .champions-scroll-wrap::after {
+      content:""; position:absolute; top:0; right:0; bottom:0; width:80px;
+      background:linear-gradient(270deg,var(--bg),transparent);
+      pointer-events:none; z-index:2;
+    }
+    .champions-track {
+      display:grid;
+      grid-template-columns:repeat(6,minmax(240px,1fr));
+      gap:12px;
+      overflow-x:auto; padding-bottom:10px;
+      scrollbar-width:thin;
+      scrollbar-color:rgba(243,193,94,.2) transparent;
+    }
+    .champion {
+      position:relative; border-radius:10px; overflow:hidden;
+      min-height:370px;
+      border:1px solid var(--line2);
+      background:var(--surf);
+      transition:border-color .3s, transform .3s, box-shadow .3s;
+      flex-shrink:0;
+    }
+    .champion:hover {
+      border-color:rgba(243,193,94,.35);
+      transform:translateY(-5px);
+      box-shadow:0 30px 56px rgba(0,0,0,.5),0 0 32px rgba(142,85,255,.14);
+    }
+    .champion figure {
+      margin:0; overflow:hidden;
+      background:radial-gradient(circle at 50% 20%,rgba(243,193,94,.16),transparent 50%),
+                 linear-gradient(180deg,rgba(142,85,255,.1),rgba(0,0,0,.14));
+    }
+    .champion img {
+      width:100%; height:250px; object-fit:cover; object-position:center 20%;
+      filter:saturate(.75);
+      transition:filter .4s, transform .55s cubic-bezier(.25,.46,.45,.94);
+    }
+    .champion:hover img { filter:saturate(1); transform:scale(1.05); }
+    .champion-body { padding:18px 20px; }
+    .champion-role {
+      font-family:var(--fu); font-size:.62rem; font-weight:900;
+      letter-spacing:.22em; text-transform:uppercase;
+      color:rgba(243,193,94,.5); margin-bottom:8px;
+    }
+    .champion h3 {
+      font-family:var(--fd); font-size:1.02rem; font-weight:700;
+      color:var(--gold); letter-spacing:.04em; margin-bottom:10px;
+    }
+    .champion p { color:var(--muted); font-size:.92rem; line-height:1.72; }
+
+    /* ── GATEWAY (play / CTA) ────────────────── */
+    .gateway {
+      position:relative; border-radius:12px; overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .gateway-bg {
+      position:absolute; inset:0; z-index:0;
+    }
+    .gateway-bg img {
+      width:100%; height:100%; object-fit:cover;
+      filter:saturate(.45) brightness(.14);
+    }
+    .gateway-bg::after {
+      content:""; position:absolute; inset:0;
       background:
-        radial-gradient(circle at center, rgba(142, 85, 255, 0.12), transparent 58%),
-        rgba(0, 0, 0, 0.28);
+        radial-gradient(ellipse 70% 60% at 50% 50%,rgba(142,85,255,.28),transparent),
+        linear-gradient(135deg,rgba(7,3,15,.82),rgba(58,24,104,.5));
+    }
+    .gateway-inner {
+      position:relative; z-index:1;
+      display:grid; grid-template-columns:1fr auto;
+      gap:28px; align-items:center;
+      padding:58px 56px;
+    }
+    .gateway h2 { margin-bottom:16px; font-size:clamp(2rem,4vw,3.2rem); }
+    .gateway p {
+      color:var(--muted); font-size:1.04rem; line-height:1.86;
+      font-style:italic; max-width:600px;
+    }
+    .gateway-cta { display:flex; flex-direction:column; gap:12px; flex-shrink:0; }
+    .gateway-ornament {
+      position:absolute; top:20px; right:280px; z-index:1;
+      width:1px; height:calc(100% - 40px);
+      background:linear-gradient(180deg,transparent,rgba(243,193,94,.25),transparent);
+    }
+    .gateway-corner {
+      position:absolute; width:30px; height:30px;
+      border-color:rgba(243,193,94,.3); border-style:solid; border-width:0;
+    }
+    .gateway-corner.tl { top:12px; left:12px; border-top-width:1px; border-left-width:1px; }
+    .gateway-corner.tr { top:12px; right:12px; border-top-width:1px; border-right-width:1px; }
+    .gateway-corner.bl { bottom:12px; left:12px; border-bottom-width:1px; border-left-width:1px; }
+    .gateway-corner.br { bottom:12px; right:12px; border-bottom-width:1px; border-right-width:1px; }
+    .status-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      font-family:var(--fu); font-size:.66rem; font-weight:800;
+      letter-spacing:.2em; text-transform:uppercase; color:var(--dim);
+      margin-bottom:10px;
+    }
+    .status-dot {
+      width:7px; height:7px; border-radius:50%;
+      background:var(--gold); opacity:.6;
+      animation:dotpulse 2s ease-in-out infinite;
+    }
+    @keyframes dotpulse {
+      0%,100%{opacity:.4; transform:scale(.9)}
+      50%    {opacity:.9; transform:scale(1.15)}
     }
 
-    .media-card div {
-      padding: 18px;
-    }
-
-    .media-card strong {
-      display: block;
-      color: var(--gold);
-      font-size: 1.15rem;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .media-card p {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.78;
-    }
-
-    .download {
-      padding: 34px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background:
-        linear-gradient(90deg, rgba(142, 85, 255, 0.18), rgba(243, 193, 94, 0.1)),
-        rgba(8, 5, 13, 0.84);
-      box-shadow: var(--shadow);
-    }
-
-    .download-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .download h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-    }
-
+    /* ── FOOTER ──────────────────────────────── */
     footer {
-      padding: 34px 0 50px;
-      border-top: 1px solid var(--line);
-      background: rgba(4, 2, 8, 0.78);
-      position: relative;
-      z-index: 1;
+      padding:44px 0 60px;
+      background:rgba(4,2,8,.9);
+      border-top:1px solid var(--line);
+      position:relative; z-index:1;
     }
-
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      gap: 22px;
-      color: var(--muted);
-      line-height: 1.7;
+    .footer-inner {
+      display:flex; justify-content:space-between;
+      align-items:flex-start; gap:28px;
     }
-
-    .footer-grid strong {
-      color: var(--gold);
+    .footer-brand strong {
+      font-family:var(--fd); font-size:.96rem; letter-spacing:.12em;
+      text-transform:uppercase; color:var(--gold); display:block; margin-bottom:6px;
     }
+    .footer-brand p { color:var(--dim); font-size:.88rem; line-height:1.7; }
+    .footer-right { text-align:right; color:var(--dim); font-size:.86rem; line-height:1.76; }
 
-    @media (max-width: 980px) {
-      .hero-grid,
-      .showcase,
-      .download-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stage {
-        min-height: 460px;
-        margin-left: 0;
-      }
-
-      .hero-emblem {
-        top: 14px;
-        width: min(44%, 220px);
-      }
-
-      .feature-grid,
-      .media-grid,
-      .character-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .ribbon {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media(max-width:980px) {
+      .seals-grid { grid-template-columns:repeat(2,1fr); }
+      .codex-grid  { grid-template-columns:repeat(2,1fr); }
+      .media-strip { grid-template-columns:repeat(2,1fr); }
+      .portals     { grid-template-columns:1fr; }
+      .portal      { min-height:280px; }
+      .portal p    { max-height:none; opacity:1; }
+      .combat-layout { grid-template-columns:1fr; }
+      .combat-quad { grid-template-columns:repeat(2,1fr); }
+      .champions-track { grid-template-columns:repeat(3,minmax(220px,1fr)); }
+      .gateway-inner { grid-template-columns:1fr; }
+      .gateway-cta { flex-direction:row; flex-wrap:wrap; }
+      .gateway-ornament { display:none; }
+      .footer-inner { flex-direction:column; }
+      .footer-right { text-align:left; }
     }
-
-    @media (max-width: 640px) {
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
-      }
-
-      .navlinks {
-        justify-content: flex-start;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      h1 {
-        font-size: clamp(3.7rem, 18vw, 5.2rem);
-      }
-
-      .feature-grid,
-      .media-grid,
-      .character-grid,
-      .scene,
-      .ribbon {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        flex-direction: column;
-      }
+    @media(max-width:640px) {
+      .nav { flex-direction:column; align-items:flex-start; padding:14px 0; min-height:auto; }
+      .navlinks { flex-wrap:wrap; gap:4px; }
+      .seals-grid { grid-template-columns:repeat(2,1fr); }
+      .codex-grid  { grid-template-columns:1fr; }
+      .media-strip { grid-template-columns:1fr; }
+      .combat-quad { grid-template-columns:1fr; }
+      .champions-track { grid-template-columns:repeat(2,minmax(200px,1fr)); }
+      .gateway-inner { padding:36px 24px; }
+      h1 { font-size:clamp(3.6rem,18vw,5.2rem); }
     }
   </style>
 </head>
 <body>
+
+  <!-- film grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ── NAV ─────────────────────────────────── -->
   <header class="topbar">
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Sherwood Legends home">
-        <div class="crest"><img src="./assets/site-icon.png" alt="" /></div>
+      <a class="brand" href="#top" aria-label="Sherwood Legends">
+        <div class="brand-crest"><img src="./assets/site-icon.png" alt="" /></div>
         <div>
-          <strong>Sherwood Legends</strong>
-          <span>Asilzade</span>
+          <div class="brand-name">Sherwood Legends</div>
+          <span class="brand-by">by Asilzade &mdash; Noblesse Ltc.</span>
         </div>
       </a>
       <nav class="navlinks" aria-label="Primary navigation">
-        <a href="#features">Features</a>
-        <a href="#world">World</a>
+        <a href="#codex">Codex</a>
+        <a href="#realm">Realm</a>
         <a href="#combat">Combat</a>
-        <a href="#heroes">Heroes</a>
-        <a href="#play">Play</a>
+        <a href="#champions">Champions</a>
+        <a href="#gateway">Play</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Fantasy MMORPG Realm</div>
-          <h1>Sherwood Legends</h1>
-          <p class="tagline">
-            Enter a darker, richer Sherwood world shaped around classic dungeon adventure, open-world raids,
-            real-time battles, animated world objects, new weapons, refreshed pets, and player-driven clans. Built by
-            <strong>Asilzade</strong> under <strong>Noblesse Ltc.</strong>
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#play">Play Client</a>
-            <a class="btn" href="#world">Explore Realm</a>
-          </div>
-        </div>
 
-        <div class="stage" aria-hidden="true">
-          <img class="hero-emblem" src="./assets/site-icon.png" alt="" />
-          <img class="hero-character" src="./assets/valkyrie-screen.jpg" alt="Sherwood Legends fantasy castle scene" />
-          <img class="floating-beast" src="./assets/dragon-screen.jpg" alt="Dragon battle scene" />
+    <!-- ── HERO ──────────────────────────────── -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-bg" aria-hidden="true">
+        <img src="./assets/valkyrie-screen.jpg" alt="" />
+      </div>
+      <div class="hero-inner">
+        <div class="hero-eyebrow"><span>&#9670;</span> Fantasy MMORPG Realm <span>&#9670;</span></div>
+        <h1>Sherwood<br><span class="hero-sub">Legends</span></h1>
+        <p class="hero-desc">
+          A darker, richer world shaped around castle raids, open-world adventure,
+          real-time combat, animated harbors, and a realm identity built from the ground up
+          by <strong>Asilzade</strong> under <strong>Noblesse Ltc.</strong>
+        </p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#gateway">Enter the Realm</a>
+          <a class="btn" href="#codex">The Codex</a>
         </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="scroll-rod"></div>
+        Scroll
       </div>
     </section>
 
-    <div class="ribbon" aria-label="Game highlights">
-      <div>3 New Weapons</div>
-      <div>4 Graphic Modes</div>
-      <div>Raid Scoreboard</div>
-      <div>Animated Ship</div>
+    <!-- ── SEALS ──────────────────────────────── -->
+    <div class="seals-wrap" aria-label="Game highlights">
+      <div class="seals-grid">
+        <div class="seal" data-reveal data-d="1">
+          <div class="seal-icon-ring">
+            <svg class="seal-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+          </div>
+          <div class="seal-val">3</div>
+          <div class="seal-lbl">New Weapons</div>
+        </div>
+        <div class="seal" data-reveal data-d="2">
+          <div class="seal-icon-ring">
+            <svg class="seal-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+            </svg>
+          </div>
+          <div class="seal-val">4</div>
+          <div class="seal-lbl">Graphics Modes</div>
+        </div>
+        <div class="seal" data-reveal data-d="3">
+          <div class="seal-icon-ring">
+            <svg class="seal-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <div class="seal-val">Raid</div>
+          <div class="seal-lbl">Scoreboard HUD</div>
+        </div>
+        <div class="seal" data-reveal data-d="4">
+          <div class="seal-icon-ring">
+            <svg class="seal-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.69a16 16 0 006.4 6.4l1.06-1.06a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div class="seal-val">Live</div>
+          <div class="seal-lbl">Animated Ship</div>
+        </div>
+      </div>
     </div>
 
-    <section id="features">
+    <!-- ── CODEX ──────────────────────────────── -->
+    <section class="section" id="codex">
       <div class="wrap">
-        <div class="section-title">
-          <div class="overline">Core Game Features</div>
-          <h2>Sherwood Legends launches with weapons, pets, graphics, raids, anti-cheat, and moving world systems.</h2>
+        <div class="sec-hd" data-reveal>
+          <div class="overline">The Codex</div>
+          <h2>Every feature forged for the realm.</h2>
           <p>
-            Sherwood Legends is built with a larger custom feature set from the start: three new weapon models,
-            expanded pet textures and color choices, refreshed monster visuals, a moving harbor ship, multiple
-            graphics modes, new PvP variants, anti-cheat protection, and a raid-ready battleground system.
+            Sherwood Legends arrives with custom weapons, expanded pets, refreshed monsters,
+            multiple graphic profiles, anti-cheat protection, and full raid infrastructure
+            — not as additions, but as the foundation.
           </p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature">
-            <strong>Three New Weapons</strong>
-            <p>Three custom swords have been added to the realm, with weapon color logic tuned so blade finishes can follow the game color system.</p>
+        <div class="codex-grid">
+          <article class="codex-entry" data-reveal data-d="1">
+            <div class="codex-num">I</div>
+            <h3>Three New Weapons</h3>
+            <p>Three custom swords with weapon color logic tuned so blade finishes follow the game color system naturally.</p>
+            <div class="codex-accent"></div>
           </article>
-          <article class="feature">
-            <strong>Pet Texture Expansion</strong>
+          <article class="codex-entry" data-reveal data-d="2">
+            <div class="codex-num">II</div>
+            <h3>Pet Texture Expansion</h3>
             <p>All pet lines now support new texture and color variants, giving transformations more visual identity across the world.</p>
+            <div class="codex-accent"></div>
           </article>
-          <article class="feature">
-            <strong>New Mob Textures</strong>
-            <p>Monster visuals are being refreshed with new texture directions so dungeons and raids feel less repetitive.</p>
+          <article class="codex-entry" data-reveal data-d="3">
+            <div class="codex-num">III</div>
+            <h3>New Mob Textures</h3>
+            <p>Monster visuals refreshed with new texture directions so dungeons and raids feel less repetitive over long sessions.</p>
+            <div class="codex-accent"></div>
           </article>
-          <article class="feature">
-            <strong>Four Graphics Modes</strong>
-            <p>The visual pipeline now offers four different graphics profiles, from lighter classic play to richer HD-style shader presentation.</p>
+          <article class="codex-entry" data-reveal data-d="1">
+            <div class="codex-num">IV</div>
+            <h3>Four Graphics Modes</h3>
+            <p>The visual pipeline offers four graphics profiles, from lighter classic play to richer HD-style shader presentation.</p>
+            <div class="codex-accent"></div>
           </article>
-          <article class="feature">
-            <strong>Teleport 1 Redesign</strong>
-            <p>Teleport 1 has been redesigned with four different Sherwood Castle theme modes, letting players choose the atmosphere they want.</p>
+          <article class="codex-entry" data-reveal data-d="2">
+            <div class="codex-num">V</div>
+            <h3>Teleport 1 Redesign</h3>
+            <p>Sherwood Castle now ships with four selectable theme modes — the atmosphere shifts, the core map stays the same.</p>
+            <div class="codex-accent"></div>
           </article>
-          <article class="feature">
-            <strong>Raid Systems</strong>
-            <p>Raid play now includes team separation, scoreboard HUD direction, and a win condition structure for organized battles.</p>
+          <article class="codex-entry" data-reveal data-d="3">
+            <div class="codex-num">VI</div>
+            <h3>Raid Systems</h3>
+            <p>Team separation, scoreboard HUD direction, and a win condition structure for organized battles at Raider's Battleground.</p>
+            <div class="codex-accent"></div>
           </article>
-          <article class="feature">
-            <strong>Anti-Cheat Protection</strong>
-            <p>The client is protected against common memory editing and runtime manipulation tools, including Cheat Engine-style programs, helping keep combat, inventory, and progression fair.</p>
+          <article class="codex-entry" data-reveal data-d="1" style="grid-column:span 3">
+            <div class="codex-num">VII</div>
+            <h3>Anti-Cheat Protection</h3>
+            <p>The client is protected against common memory editing and runtime manipulation tools including Cheat Engine-style programs, keeping combat, inventory, and progression fair for everyone in the realm.</p>
+            <div class="codex-accent"></div>
           </article>
         </div>
 
-        <div class="media-grid">
-          <article class="media-card contain">
-            <img src="./assets/texture-expansion.png" alt="Sherwood Legends texture and color expansion showcase" />
-            <div>
-              <strong>Game Visual Showcase</strong>
-              <p>A game-focused showcase for pet colors, mob refreshes, weapon finishes, HD graphics modes, Teleport 1 redesign, and raid systems.</p>
+        <div class="media-strip">
+          <article class="media-card contain" data-reveal data-d="1">
+            <figure><img src="./assets/texture-expansion.png" alt="Sherwood Legends visual showcase — pet colors, mob textures, weapons, graphics modes" /></figure>
+            <div class="media-card-body">
+              <strong>Visual Showcase</strong>
+              <p>Pet colors, mob refreshes, weapon finishes, HD graphics modes, Teleport 1 redesign, and raid systems — all in one frame.</p>
             </div>
           </article>
-          <article class="media-card">
-            <img src="./assets/ship-orbit.png" alt="Animated ship in Sherwood Legends harbor" />
-            <div>
+          <article class="media-card" data-reveal data-d="2">
+            <figure><img src="./assets/ship-orbit.png" alt="Animated ship orbiting the Sherwood harbor" /></figure>
+            <div class="media-card-body">
               <strong>Animated Harbor Ship</strong>
-              <p>The ship uses a world animation path and can sail around the map area, creating a more alive Teleport 1 harbor scene.</p>
+              <p>The ship sails an orbit path around the island, turning the Teleport 1 harbor into a living, breathing scene.</p>
             </div>
           </article>
-          <article class="media-card contain">
-            <img src="./assets/scoreboard-hud.png" alt="Raid scoreboard HUD concept" />
-            <div>
+          <article class="media-card contain" data-reveal data-d="3">
+            <figure><img src="./assets/scoreboard-hud.png" alt="Raid scoreboard HUD" /></figure>
+            <div class="media-card-body">
               <strong>Scoreboard HUD</strong>
-              <p>Raid mode includes team split logic, scoreboard presentation, and a victory mechanism for structured raid matches.</p>
+              <p>Raid mode includes team split logic, scoreboard presentation, and a victory mechanism for structured matches.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="world">
+    <div class="divider"></div>
+
+    <!-- ── REALM ──────────────────────────────── -->
+    <section class="section" id="realm">
       <div class="wrap">
-        <div class="section-title">
+        <div class="sec-hd center" data-reveal>
           <div class="overline">The Realm</div>
           <h2>A castle world built for raids, clans, and legends.</h2>
           <p>
-            Sherwood Legends keeps the spirit of a compact online fantasy world, then pushes it toward a stronger
-            private realm identity: richer visuals, custom character choices, expanded pet colors, tuned starter
-            progression, and a server direction shaped for community play.
+            Sherwood Legends keeps the spirit of a compact online fantasy world,
+            then pushes it toward a stronger private realm identity.
           </p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature">
-            <strong>Raider's Battleground</strong>
-            <p>Teleport 14 is now known as Raider's Battleground, a new PvP-focused arena space designed for raid-style encounters.</p>
-          </article>
-          <article class="feature">
-            <strong>Castle Theme Modes</strong>
-            <p>Teleport 1 has been redesigned and supports four selectable themes, so Sherwood Castle can shift between different moods without changing the core map.</p>
-          </article>
-          <article class="feature">
-            <strong>Living Map Objects</strong>
-            <p>The animated ship system makes the harbor feel active, with the vessel moving around the island path instead of staying static.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="combat">
-      <div class="wrap showcase">
-        <article class="panel">
-          <div class="overline">Combat</div>
-          <h2>Skill, timing, and equipment matter.</h2>
-          <p>
-            The combat loop is built around active decisions: approach, strike, defend, reposition, and survive.
-            Sherwood Legends keeps the immediate action feel while supporting custom weapons, starter loadouts,
-            dungeon progression, and PvP encounters.
-          </p>
-          <p>
-            Weapons and character visuals are treated as part of the identity of the world, with custom swords,
-            color logic, pet transformations, and role-focused avatars designed to feel readable in motion.
-          </p>
-          <p>
-            PvP has three duel directions: a normal duel profile, a slow-build profile, and an extra-fast profile.
-            The core difference is damage calculation, letting fights feel heavier, steadier, or much faster.
-          </p>
-          <p>
-            Raider's Battleground adds team separation, scoreboard HUD flow, and a win mechanism for organized raid
-            matches rather than simple open-field fighting.
-          </p>
-          <div class="button-row">
-            <a class="btn" href="#heroes">View Heroes</a>
-            <a class="btn" href="#play">Get Ready</a>
+        <div class="portals">
+          <div class="portal" data-reveal data-d="1">
+            <div class="portal-img">
+              <img src="./assets/sherwood-banner.jpg" alt="Sherwood Castle realm" />
+            </div>
+            <div class="portal-frame" aria-hidden="true"></div>
+            <div class="portal-body">
+              <div class="portal-tag">Zone &mdash; Teleport 1</div>
+              <h3>Castle Theme Modes</h3>
+              <p>Four selectable castle themes let Sherwood Castle shift between different moods without changing the core map structure.</p>
+            </div>
           </div>
-        </article>
-
-        <div class="scene" aria-label="Sherwood Legends creature and character art">
-          <img src="./assets/dark-knight-screen.jpg" alt="Dark knight scene" />
-          <img src="./assets/ranger-screen.jpg" alt="Ranger scene" />
-          <img src="./assets/viking-screen.jpg" alt="Viking scene" />
-          <img src="./assets/dragon-screen.jpg" alt="Dragon scene" />
+          <div class="portal" data-reveal data-d="2">
+            <div class="portal-img">
+              <img src="./assets/dragon-screen.jpg" alt="Dragon at Raider's Battleground" />
+            </div>
+            <div class="portal-frame" aria-hidden="true"></div>
+            <div class="portal-body">
+              <div class="portal-tag">Zone &mdash; Teleport 14</div>
+              <h3>Raider's Battleground</h3>
+              <p>A new PvP-focused arena space designed for raid-style encounters — team splits, scoreboards, and win conditions.</p>
+            </div>
+          </div>
+          <div class="portal" data-reveal data-d="3">
+            <div class="portal-img">
+              <img src="./assets/valkyrie-screen.jpg" alt="Animated harbor with ship" />
+            </div>
+            <div class="portal-frame" aria-hidden="true"></div>
+            <div class="portal-body">
+              <div class="portal-tag">Zone &mdash; Harbor</div>
+              <h3>Living Map Objects</h3>
+              <p>The animated ship system makes the harbor feel active — the vessel moves along its island path instead of staying static.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="heroes">
+    <div class="divider"></div>
+
+    <!-- ── COMBAT ─────────────────────────────── -->
+    <section class="section" id="combat">
+      <div class="wrap combat-layout">
+        <div class="combat-panel" data-reveal="left">
+          <div class="overline">Combat</div>
+          <h2>Skill, timing, and equipment decide the battle.</h2>
+          <p>
+            The combat loop is built around active decisions: approach, strike, defend,
+            reposition, survive. Custom weapons, starter loadouts, dungeon progression,
+            and PvP encounters all feed the same tension.
+          </p>
+          <p>
+            Weapons and character visuals are part of the world's identity — custom swords,
+            color logic, pet transformations, and role-focused avatars designed to be
+            readable in motion.
+          </p>
+
+          <div class="duel-tabs" role="tablist" aria-label="Duel modes">
+            <button class="duel-tab active" role="tab" data-target="duel-normal">Normal</button>
+            <button class="duel-tab" role="tab" data-target="duel-slow">Slow Build</button>
+            <button class="duel-tab" role="tab" data-target="duel-fast">Extra Fast</button>
+          </div>
+          <div class="duel-panels">
+            <div class="duel-panel active" id="duel-normal">
+              <p>Balanced damage calculation. Fights flow at a natural pace where positioning, timing, and gear make a visible difference over time.</p>
+            </div>
+            <div class="duel-panel" id="duel-slow">
+              <p>Reduced damage output across the board. Duels last longer, rewarding defensive play, stamina, and resource management under sustained pressure.</p>
+            </div>
+            <div class="duel-panel" id="duel-fast">
+              <p>Amplified damage calculation. Fights collapse in moments — every opening costs lives, and decisive aggression defines the winner.</p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+            <a class="btn" href="#champions">View Champions</a>
+            <a class="btn" href="#gateway">Get Ready</a>
+          </div>
+        </div>
+
+        <div class="combat-quad" data-reveal="right">
+          <figure>
+            <img src="./assets/dark-knight-screen.jpg" alt="Dark knight in combat" />
+            <figcaption>Dark Knight</figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/ranger-screen.jpg" alt="Ranger in the field" />
+            <figcaption>Ranger</figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/viking-screen.jpg" alt="Viking warrior" />
+            <figcaption>Viking</figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/dragon-screen.jpg" alt="Dragon encounter" />
+            <figcaption>Dragon</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── CHAMPIONS ──────────────────────────── -->
+    <section class="section" id="champions">
       <div class="wrap">
-        <div class="section-title">
-          <div class="overline">Heroes</div>
+        <div class="sec-hd" data-reveal>
+          <div class="overline">Champions</div>
           <h2>Classic Sherwood scenes, rebuilt for a new realm.</h2>
           <p>
-            The site now uses normal Sherwood-style screenshots instead of internal texture or model preview images,
-            keeping the public face closer to the fantasy MMO atmosphere.
-            Inside the game, pets, mobs, weapons, and graphics modes are being refreshed with a stronger custom
-            Sherwood Legends identity.
+            Inside the game, pets, mobs, weapons, and graphics modes are being refreshed
+            with a stronger custom Sherwood Legends identity.
           </p>
         </div>
-
-        <div class="character-grid">
-          <article class="character-card">
-            <figure><img src="./assets/valkyrie-screen.jpg" alt="Valkyrie scene" /></figure>
-            <div>
-              <h3>Castle Realm</h3>
-              <p>Adventure spaces shaped around castles, raids, clans, and open-world fantasy movement.</p>
-            </div>
-          </article>
-          <article class="character-card">
-            <figure><img src="./assets/dragon-screen.jpg" alt="Dragon battle" /></figure>
-            <div>
-              <h3>Dragon Hunts</h3>
-              <p>Large fantasy creatures, dungeon danger, and group fights give the world its bigger scale.</p>
-            </div>
-          </article>
-          <article class="character-card">
-            <figure><img src="./assets/dark-knight-screen.jpg" alt="Dark knight combat" /></figure>
-            <div>
-              <h3>Dark Knights</h3>
-              <p>Real-time combat remains the center: timing, equipment, movement, and pressure.</p>
-            </div>
-          </article>
-          <article class="character-card">
-            <figure><img src="./assets/ranger-screen.jpg" alt="Ranger scene" /></figure>
-            <div>
-              <h3>Rangers</h3>
-              <p>Exploration and character identity stay readable through clean fantasy screenshots.</p>
-            </div>
-          </article>
-          <article class="character-card">
-            <figure><img src="./assets/sherwood-banner.jpg" alt="Sherwood Legends banner" /></figure>
-            <div>
-              <h3>Heavenly Assasin</h3>
-              <p>A new pet with a noble hooded assassin look, close to an Assassin's Creed-like fantasy silhouette without losing the Sherwood style.</p>
-            </div>
-          </article>
-          <article class="character-card">
-            <figure><img src="./assets/viking-screen.jpg" alt="Viking scene" /></figure>
-            <div>
-              <h3>Mob Refresh</h3>
-              <p>New monster texture work gives mobs more variety for dungeon, raid, and battleground encounters.</p>
-            </div>
-          </article>
-        </div>
       </div>
-    </section>
-
-    <section id="play">
-      <div class="wrap download">
-        <div class="download-grid">
-          <div>
-            <div class="overline">SherwoodLegends.com</div>
-            <h2>Client download and account details will be connected next.</h2>
-            <p class="tagline">
-              This page is ready for the public site structure. The final play links, launcher download, Discord,
-              server status, and installation details can be wired in after the hosting and domain records are connected.
-            </p>
-          </div>
-          <div class="button-row">
-            <a class="btn primary" href="#" aria-label="Play link placeholder">Coming Soon</a>
-            <a class="btn" href="#top">Back to Top</a>
+      <div class="wrap">
+        <div class="champions-scroll-wrap">
+          <div class="champions-track">
+            <article class="champion" data-reveal data-d="1">
+              <figure><img src="./assets/valkyrie-screen.jpg" alt="Castle Realm" /></figure>
+              <div class="champion-body">
+                <div class="champion-role">Realm</div>
+                <h3>Castle Realm</h3>
+                <p>Adventure spaces shaped around castles, raids, clans, and open-world movement.</p>
+              </div>
+            </article>
+            <article class="champion" data-reveal data-d="2">
+              <figure><img src="./assets/dragon-screen.jpg" alt="Dragon Hunts" /></figure>
+              <div class="champion-body">
+                <div class="champion-role">World Boss</div>
+                <h3>Dragon Hunts</h3>
+                <p>Large fantasy creatures and dungeon danger give the world its bigger scale.</p>
+              </div>
+            </article>
+            <article class="champion" data-reveal data-d="3">
+              <figure><img src="./assets/dark-knight-screen.jpg" alt="Dark Knight" /></figure>
+              <div class="champion-body">
+                <div class="champion-role">Warrior</div>
+                <h3>Dark Knights</h3>
+                <p>Real-time combat: timing, equipment, movement, and pressure under fire.</p>
+              </div>
+            </article>
+            <article class="champion" data-reveal data-d="4">
+              <figure><img src="./assets/ranger-screen.jpg" alt="Ranger" /></figure>
+              <div class="champion-body">
+                <div class="champion-role">Scout</div>
+                <h3>Rangers</h3>
+                <p>Exploration and character identity stay readable through clean fantasy screenshots.</p>
+              </div>
+            </article>
+            <article class="champion" data-reveal data-d="5">
+              <figure><img src="./assets/sherwood-banner.jpg" alt="Heavenly Assassin pet" /></figure>
+              <div class="champion-body">
+                <div class="champion-role">Pet &mdash; New</div>
+                <h3>Heavenly Assassin</h3>
+                <p>A noble hooded figure — Assassin's Creed silhouette, Sherwood soul. The latest pet addition.</p>
+              </div>
+            </article>
+            <article class="champion" data-reveal data-d="6">
+              <figure><img src="./assets/viking-screen.jpg" alt="Mob refresh" /></figure>
+              <div class="champion-body">
+                <div class="champion-role">Mob Refresh</div>
+                <h3>New Monster Textures</h3>
+                <p>New texture work gives mobs more variety for dungeon, raid, and battleground encounters.</p>
+              </div>
+            </article>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ── GATEWAY ────────────────────────────── -->
+    <section class="section" id="gateway">
+      <div class="wrap">
+        <div class="gateway" data-reveal>
+          <div class="gateway-bg" aria-hidden="true">
+            <img src="./assets/sherwood-banner.jpg" alt="" />
+          </div>
+          <div class="gateway-corner tl" aria-hidden="true"></div>
+          <div class="gateway-corner tr" aria-hidden="true"></div>
+          <div class="gateway-corner bl" aria-hidden="true"></div>
+          <div class="gateway-corner br" aria-hidden="true"></div>
+          <div class="gateway-ornament" aria-hidden="true"></div>
+          <div class="gateway-inner">
+            <div>
+              <div class="status-badge">
+                <div class="status-dot"></div>
+                SherwoodLegends.com
+              </div>
+              <h2>The gates are being prepared.</h2>
+              <p>
+                This realm is ready for the public. The final play links, launcher download,
+                Discord, server status, and installation details will be connected once hosting
+                and domain records are live.
+              </p>
+            </div>
+            <div class="gateway-cta">
+              <a class="btn primary" href="#" aria-label="Coming soon">Coming Soon</a>
+              <a class="btn" href="#top">Back to Top</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- ── FOOTER ─────────────────────────────── -->
   <footer>
-    <div class="wrap footer-grid">
-      <div>
-        <strong>Sherwood Legends</strong><br />
-        Created by Asilzade. Published under Noblesse Ltc.
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <strong>Sherwood Legends</strong>
+        <p>Created by Asilzade. Published under Noblesse Ltc.<br>
+        Domain: sherwoodlegends.com</p>
       </div>
-      <div>
-        Domain: sherwoodlegends.com<br />
-        Theme: purple, gold, castle fantasy.
+      <div class="footer-right">
+        Theme: Purple &middot; Gold &middot; Castle Fantasy<br>
+        &copy; Noblesse Ltc. All rights reserved.
       </div>
     </div>
   </footer>
+
+  <script>
+    // ── SCROLL REVEAL ─────────────────────────
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+    revealEls.forEach(el => ro.observe(el));
+
+    // ── DUEL TABS ─────────────────────────────
+    document.querySelectorAll('.duel-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.target;
+        document.querySelectorAll('.duel-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.duel-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
