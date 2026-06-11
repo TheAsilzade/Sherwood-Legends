@@ -9,6 +9,7 @@ User-agent: *
 Allow: /
 Allow: /llms.txt
 Allow: /sitemap.xml
+Allow: /BingSiteAuth.xml
 Disallow:
 
 # -------------------------------------------------------------------------
@@ -66,6 +67,7 @@ User-agent: bingbot
 Allow: /
 Allow: /llms.txt
 Allow: /sitemap.xml
+Allow: /BingSiteAuth.xml
 
 User-agent: AdIdxBot
 Allow: /
