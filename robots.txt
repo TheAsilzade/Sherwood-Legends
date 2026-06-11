@@ -1,0 +1,108 @@
+# =========================================================================
+# SHERWOOD LEGENDS - GLOBAL ROBOTS CONTROL POLICY
+# Target Domain: sherwoodlegends.com
+# Purpose: Generative Engine Optimization (GEO) & Search Crawler Directive
+# =========================================================================
+
+# Allow all standard search crawlers
+User-agent: *
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+Disallow:
+
+# -------------------------------------------------------------------------
+# DIRECTIVES FOR LLM & GENERATIVE AI ENGINE CRAWLERS
+# Prioritize indexing of the semantic profile /llms.txt
+# -------------------------------------------------------------------------
+
+# OpenAI ChatGPT Bot (GPT-4, GPT-5 models)
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+# OpenAI Search Crawler
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+# Google Gemini training & search grounding crawlers
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+User-agent: Google-Other
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+# Anthropic Claude models (Claude 3.5 Sonnet, Opus)
+User-agent: Anthropic-ai
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+User-agent: Claude-Web
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+# Perplexity AI search engine
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+# Microsoft Bing & Copilot Search
+User-agent: bingbot
+Allow: /
+Allow: /llms.txt
+Allow: /sitemap.xml
+
+User-agent: AdIdxBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: BingPreview
+Allow: /
+
+# Apple Intelligence Bot (Siri & Apple AI search)
+User-agent: Applebot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /llms.txt
+
+# Meta LLaMA / Meta AI crawler
+User-agent: Meta-ExternalAgent
+Allow: /
+Allow: /llms.txt
+
+User-agent: facebookexternalhit
+Allow: /
+Allow: /llms.txt
+
+# Cohere AI models
+User-agent: cohere-ai
+Allow: /
+Allow: /llms.txt
+
+# You.com AI search bot
+User-agent: YouBot
+Allow: /
+Allow: /llms.txt
+
+# =========================================================================
+# SITEMAP INDEX REGISTRY
+# =========================================================================
+Sitemap: https://sherwoodlegends.com/sitemap.xml
